@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDX Artbeat — Portland art openings &amp; shows</title>
+<meta name="description" content="Every gallery opening, exhibition, artist talk and free museum day in Portland, Oregon — updated daily from 35+ galleries, museums and art spaces.">
+<meta name="theme-color" content="#f6f3ee">
+<meta property="og:title" content="PDX Artbeat — Portland art openings & shows">
+<meta property="og:description" content="What's on in Portland art this week: openings, exhibitions, artist talks and free museum days, updated daily.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161514'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='700' text-anchor='middle' fill='%23e8462b'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  :root {
+    --bg: #f6f3ee; --ink: #161514; --muted: #6f6a63; --line: #e2ddd5; --card: #fff;
+    --accent: #e8462b; --accent-soft: #fde6e0;
+    --opening: #e8462b; --talk: #2b6de8; --workshop: #1f9d6b; --other: #8a5cf6; --exhibition: #161514;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 Inter, system-ui, sans-serif; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .burger { border: 0; background: none; font-size: 22px; color: inherit; padding: 4px 8px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+  header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 1000; }
+  header .wrap { display: flex; align-items: center; gap: 32px; height: 68px; }
+  .logo { font-family: Fraunces, serif; font-weight: 800; font-size: 22px; letter-spacing: -0.5px; }
+  .logo span { color: var(--accent); }
+  nav { display: flex; gap: 22px; font-weight: 500; color: var(--muted); }
+  nav a.active, nav a:hover { color: var(--ink); }
+  .updated { margin-left: auto; font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: #1f9d6b; }
+
+  .hero { padding: 44px 0 26px; }
+  .hero h1 { font-family: Fraunces, serif; font-weight: 600; font-size: 54px; line-height: 1.02; letter-spacing: -1.5px; margin: 0 0 16px; max-width: 760px; }
+  .hero h1 em { color: var(--accent); font-style: italic; }
+  .stats { display: flex; gap: 10px; flex-wrap: wrap; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 13px; }
+  .stat b { font-weight: 600; }
+
+  .filters { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; scrollbar-width: none; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 36px; position: sticky; top: 68px; background: var(--bg); z-index: 900; }
+  .chip { flex: none; font: inherit; font-size: 13px; color: inherit; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 6px 13px; font-size: 13px; cursor: pointer; user-select: none; }
+  .chip.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .sep { width: 1px; height: 22px; background: var(--line); margin: 0 4px; }
+  select { font: inherit; font-size: 13px; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); }
+
+  section { margin-bottom: 52px; }
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; }
+  .sec-head h2 { font-family: Fraunces, serif; font-weight: 600; font-size: 30px; letter-spacing: -0.6px; margin: 0; }
+  .sec-head a { font-size: 13px; color: var(--muted); }
+
+  .week { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .day { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+  .day h3 { margin: 0 0 10px; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); }
+  .day h3 b { color: var(--ink); }
+  .row { display: grid; grid-template-columns: 52px 1fr; gap: 10px; padding: 10px 0; border-top: 1px dashed var(--line); }
+  .row:first-of-type { border-top: 0; }
+  .time { font-weight: 600; font-size: 13px; }
+  .row .t { font-weight: 600; line-height: 1.25; }
+  .row .v { font-size: 13px; color: var(--muted); }
+  details.more summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--accent); padding: 8px 0 2px; list-style: none; }
+  details.more summary::-webkit-details-marker { display: none; }
+  details.more[open] summary { display: none; }
+
+  .badge { display: inline-block; font-size: 10.5px; font-weight: 600; letter-spacing: .6px; text-transform: uppercase; padding: 3px 7px; border-radius: 5px; color: #fff; margin-bottom: 4px; }
+  .b-opening_reception, .b-closing_reception { background: var(--opening); }
+  .b-artist_talk { background: var(--talk); }
+  .b-workshop { background: var(--workshop); }
+  .b-exhibition { background: var(--exhibition); }
+  .b-other, .b-performance, .b-screening, .b-art_walk, .b-fair { background: var(--other); }
+
+  .closing { display: grid; grid-auto-flow: column; grid-auto-columns: 300px; gap: 14px; overflow-x: auto; padding-bottom: 6px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
+  .card { background: var(--card); border-radius: 14px; overflow: hidden; border: 1px solid var(--line); display: flex; flex-direction: column; transition: transform .15s; }
+  .card:hover { transform: translateY(-2px); }
+  .img { aspect-ratio: 4/3; background: #e9e4dc center/cover no-repeat; position: relative; }
+  .img.ph { display: grid; place-items: center; font-family: Fraunces, serif; font-size: 40px; color: #c9c1b4; }
+  .pill { position: absolute; left: 10px; top: 10px; background: rgba(255,255,255,.92); border-radius: 999px; padding: 4px 10px; font: 600 12px Inter, system-ui, sans-serif; color: var(--ink); }
+  .pill.hot { background: var(--accent); color: #fff; }
+  .card .body { padding: 14px 16px 16px; }
+  .card h4 { font-family: Fraunces, serif; font-weight: 600; font-size: 19px; line-height: 1.15; margin: 0 0 4px; }
+  .card .artists { font-size: 13px; margin-bottom: 8px; }
+  .card .meta { font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .hood { font-size: 11px; border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
+
+  /* venue page */
+  .crumbs { font-size: 13px; color: var(--muted); padding-top: 26px; }
+  .vhead { display: grid; grid-template-columns: 1.3fr 1fr; gap: 36px; padding: 18px 0 40px; align-items: start; }
+  .vhead h1 { font-family: Fraunces, serif; font-size: 56px; letter-spacing: -1.5px; margin: 0 0 10px; line-height: 1; }
+  .vinfo { display: grid; grid-template-columns: 110px 1fr; gap: 8px 14px; font-size: 14px; margin: 22px 0; }
+  .vinfo dt { color: var(--muted); }
+  .vinfo dd { margin: 0; }
+  .btn { display: inline-block; background: var(--ink); color: #fff; padding: 10px 18px; border-radius: 999px; font-weight: 500; font-size: 14px; margin-right: 8px; }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+  #vmap { height: 300px; border-radius: 14px; border: 1px solid var(--line); }
+
+  /* venues index */
+  .vgroup h2 { font-family: Fraunces, serif; font-weight: 600; font-size: 26px; margin: 0 0 14px; display: flex; align-items: baseline; gap: 10px; }
+  .vgroup h2 small { font: 500 13px Inter; color: var(--muted); }
+  .vgroup { margin-bottom: 40px; }
+  .vgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 16px; }
+  .vcard { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: 96px 1fr; transition: transform .15s; }
+  .vcard:hover { transform: translateY(-2px); }
+  .vcard .thumb { background: #e9e4dc center/cover no-repeat; display: grid; place-items: center; font: 600 32px Fraunces, serif; color: #c9c1b4; min-height: 112px; }
+  .vcard .vb { padding: 12px 14px; display: flex; flex-direction: column; gap: 3px; }
+  .vcard b { font-size: 15px; line-height: 1.2; }
+  .vcard .addr { font-size: 12.5px; color: var(--muted); }
+  .vcard .now { font-size: 12.5px; margin-top: auto; padding-top: 6px; }
+  .vcard .now span { color: var(--accent); font-weight: 600; }
+  .vcard .now.none { color: var(--muted); }
+  .type-tag { font-size: 10.5px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); font-weight: 600; }
+
+  /* search */
+  .search { position: relative; }
+  .search input { font: inherit; font-size: 13.5px; width: 260px; padding: 8px 14px 8px 34px; border-radius: 999px; border: 1px solid var(--line); background: var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%236f6a63' stroke-width='2'%3E%3Ccircle cx='7' cy='7' r='5'/%3E%3Cpath d='m11 11 4 4'/%3E%3C/svg%3E") 12px center no-repeat; outline: none; }
+  .search input:focus { border-color: var(--ink); }
+
+  /* cost + open status */
+  .price { font-size: 10.5px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; border-radius: 5px; padding: 2px 6px; white-space: nowrap; }
+  .price.free { background: #e3f4ec; color: #157a52; }
+  .price.suggested_donation { background: #fff3d6; color: #8a6200; }
+  .price.ticketed { background: #ece7ff; color: #5b3fc4; }
+  .status { font-size: 12.5px; font-weight: 500; }
+  .status.open { color: #157a52; }
+  .status.closed { color: var(--muted); }
+  .status.appt { color: #8a6200; }
+  .status::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: currentColor; margin-right: 6px; vertical-align: 1px; }
+
+  /* free days banner */
+  .freebanner { margin-top: 18px; background: #e3f4ec; border: 1px solid #bfe5d2; border-radius: 14px; padding: 12px 16px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 13.5px; }
+  .freebanner b.t { color: #157a52; }
+  .freebanner a { background: #fff; border-radius: 999px; padding: 4px 12px; border: 1px solid #bfe5d2; }
+
+  /* event page */
+  .ehead { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; padding: 18px 0 40px; }
+  .ehero { aspect-ratio: 4/3; border-radius: 16px; background: #e9e4dc center/cover no-repeat; display: grid; place-items: center; font: 600 80px Fraunces, serif; color: #c9c1b4; }
+  .ehead h1 { font-family: Fraunces, serif; font-size: 44px; line-height: 1.05; letter-spacing: -1px; margin: 8px 0 14px; }
+  .when { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+  .ehead .desc { color: #3b3834; margin: 16px 0; }
+  .alist a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+  .calbtns { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0 10px; }
+  .btn.sm { padding: 8px 14px; font-size: 13px; }
+
+  /* hours table */
+  .hours { font-size: 13.5px; border-collapse: collapse; }
+  .hours td { padding: 2px 14px 2px 0; }
+  .hours tr.today td { font-weight: 600; }
+
+  /* search + artist */
+  .results h3 { font: 600 13px Inter; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin: 28px 0 12px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pills a { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+  .pills a small { color: var(--muted); }
+  .past .card { opacity: .75; }
+
+  /* artists index */
+  .letters { display: flex; flex-wrap: wrap; gap: 4px; margin: -18px 0 30px; }
+  .letters button, .letters span { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 6px; font: 600 13px Inter, sans-serif; border: 0; background: none; color: inherit; cursor: pointer; padding: 0; }
+  .letters button:hover { background: var(--ink); color: #fff; }
+  .letters span { color: #cfc8bd; }
+  .agroup { margin-bottom: 34px; scroll-margin-top: 150px; }
+  .agroup h2 { font: 600 30px Fraunces, serif; margin: 0 0 12px; color: var(--accent); }
+  .agrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+  .acard { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px; transition: transform .15s; }
+  .acard:hover { transform: translateY(-2px); }
+  .acard .av { width: 64px; height: 64px; border-radius: 10px; background: #e9e4dc center/cover no-repeat; display: grid; place-items: center; font: 600 24px Fraunces, serif; color: #c9c1b4; }
+  .acard b { display: block; font-size: 15px; line-height: 1.2; }
+  .acard .where { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .acard .when2 { font-size: 12px; font-weight: 600; margin-top: 4px; }
+  .when2.now { color: #157a52; }
+  .when2.soon { color: var(--accent); }
+
+  /* map page */
+  .mapwrap { display: grid; grid-template-columns: 360px 1fr; height: calc(100vh - 68px); }
+  .side { overflow-y: auto; border-right: 1px solid var(--line); padding: 20px; }
+  .side h2 { font-family: Fraunces, serif; margin: 0 0 4px; font-size: 26px; }
+  .vrow { padding: 12px 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 10px; }
+  .vrow b { display: block; }
+  .vrow small { color: var(--muted); }
+  .count { background: var(--accent-soft); color: var(--accent); font-weight: 600; font-size: 12px; border-radius: 999px; padding: 2px 9px; height: fit-content; }
+  #map { height: 100%; }
+  .pin.zero { background: #b8b1a7; }
+  .pin { background: var(--accent); color: #fff; border: 2px solid #fff; border-radius: 50%; width: 28px; height: 28px; display: grid; place-items: center; font: 600 12px Inter; box-shadow: 0 2px 6px rgba(0,0,0,.3); }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 13px; }
+  .page { display: none; }
+  .page.show { display: block; }
+
+  @media (max-width: 700px) {
+    .wrap { padding: 0 16px; }
+    header .wrap { gap: 14px; height: 58px; }
+    nav, .updated, .search { display: none; }
+    .burger { cursor: pointer; user-select: none; }
+    header.open .wrap { flex-wrap: wrap; height: auto; padding-top: 14px; padding-bottom: 16px; row-gap: 14px; }
+    header.open nav { display: flex; flex-direction: column; gap: 12px; order: 3; width: 100%; font-size: 17px; }
+    header.open .search { display: block; order: 4; width: 100%; }
+    header.open .search input { width: 100%; }
+    .ehead { grid-template-columns: 1fr; gap: 20px; }
+    .ehead h1 { font-size: 32px; }
+    .burger { margin-left: auto; font-size: 22px; }
+    .hero { padding: 26px 0 18px; }
+    .hero h1 { font-size: 36px; letter-spacing: -1px; }
+    .filters { top: 58px; flex-wrap: nowrap; overflow-x: auto; margin-bottom: 26px; }
+    .chip, select { flex: none; }
+    .sec-head h2 { font-size: 24px; }
+    .sec-head a { display: none; }
+    .grid { grid-template-columns: 1fr; }
+    .closing { grid-auto-columns: 78%; }
+    .vhead { grid-template-columns: 1fr; }
+    .vhead h1 { font-size: 40px; }
+    .mapwrap { grid-template-columns: 1fr; grid-template-rows: 55vh auto; height: auto; }
+    .side { order: 2; border-right: 0; }
+  }
+  @media (min-width: 701px) { .burger { display: none; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#home">PDX Art<span>beat</span></a>
+    <nav id="main-nav" aria-label="Main">
+      <a href="#home" data-nav="home">This Week</a>
+      <a href="#onview" data-nav="onview">On View</a>
+      <a href="#map" data-nav="map">Map</a>
+      <a href="#venues" data-nav="venues">Venues</a>
+      <a href="#artists" data-nav="artists">Artists</a>
+    </nav>
+    <form class="search" id="search-form" autocomplete="off"><input id="q" type="search" placeholder="Search artists, galleries, shows…" aria-label="Search artists, galleries and shows"></form>
+    <div class="updated"><span class="dot"></span><span id="updated"></span></div>
+    <button type="button" class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">☰</button>
+  </div>
+</header>
+
+<!-- HOME -->
+<div class="page" id="p-home">
+  <div class="wrap">
+    <div class="hero">
+      <h1>What's on in <em>Portland art</em> this week.</h1>
+      <div class="stats" id="stats"></div>
+      <div id="freebanner"></div>
+    </div>
+    <div class="filters" id="filters">
+      <button type="button" class="chip on" data-range="week">This week</button>
+      <button type="button" class="chip" data-range="month">This month</button>
+      <button type="button" class="chip" data-range="all">All upcoming</button>
+      <span class="sep"></span>
+      <button type="button" class="chip on" data-hood="">All areas</button>
+    </div>
+
+    <section>
+      <div class="sec-head"><h2 id="week-title">Openings &amp; events this week</h2><a href="events.ics" id="subscribe" title="Subscribe in Google Calendar, Apple Calendar or Outlook to get every opening automatically">📅 Subscribe to all events ↗</a></div>
+      <div class="week" id="week"></div>
+    </section>
+
+    <section id="closing-sec">
+      <div class="sec-head"><h2>Closing soon</h2><a href="#onview/closing">Last chance →</a></div>
+      <div class="closing" id="closing"></div>
+    </section>
+
+    <section id="onview">
+      <div class="sec-head"><h2>On view now</h2><a href="#onview" id="onview-count"></a></div>
+      <div class="grid" id="grid"></div>
+    </section>
+  </div>
+  <footer><div class="wrap">Collected daily from Portland galleries, museums &amp; art spaces. Always confirm details with the venue before you go. · <a href="https://github.com/oabraham721/pdxartbeat/issues/new" target="_blank" rel="noopener">Report a problem or suggest a venue</a></div></footer>
+</div>
+
+<!-- VENUE -->
+<div class="page" id="p-venue">
+  <div class="wrap">
+    <div class="crumbs"><a href="#home">Home</a> / <a href="#venues">Venues</a> / <span id="v-crumb"></span></div>
+    <div class="vhead">
+      <div>
+        <span class="hood" id="v-hood"></span>
+        <h1 id="v-name"></h1>
+        <dl class="vinfo" id="v-info"></dl>
+        <a class="btn" id="v-site" target="_blank">Visit website</a>
+        <a class="btn ghost" id="v-directions" target="_blank">Directions</a>
+      </div>
+      <div id="vmap"></div>
+    </div>
+    <section>
+      <div class="sec-head"><h2>Upcoming &amp; on view</h2></div>
+      <div class="grid" id="v-grid"></div>
+    </section>
+  </div>
+  <footer><div class="wrap">Collected daily from Portland galleries, museums &amp; art spaces. Always confirm details with the venue before you go. · <a href="https://github.com/oabraham721/pdxartbeat/issues/new" target="_blank" rel="noopener">Report a problem or suggest a venue</a></div></footer>
+</div>
+
+<!-- VENUES INDEX -->
+<div class="page" id="p-venues">
+  <div class="wrap">
+    <div class="hero">
+      <h1>Every <em>gallery</em>, museum &amp; art space.</h1>
+      <div class="stats" id="vs-stats"></div>
+    </div>
+    <div class="filters" id="vs-filters"></div>
+    <div id="vs-groups"></div>
+  </div>
+  <footer><div class="wrap">Collected daily from Portland galleries, museums &amp; art spaces. Always confirm details with the venue before you go. · <a href="https://github.com/oabraham721/pdxartbeat/issues/new" target="_blank" rel="noopener">Report a problem or suggest a venue</a></div></footer>
+</div>
+
+<!-- EVENT -->
+<div class="page" id="p-event">
+  <div class="wrap">
+    <div class="crumbs" id="e-crumbs"></div>
+    <div class="ehead" id="e-head"></div>
+    <section id="e-more"></section>
+  </div>
+  <footer><div class="wrap">Collected daily from Portland galleries, museums &amp; art spaces. Always confirm details with the venue before you go. · <a href="https://github.com/oabraham721/pdxartbeat/issues/new" target="_blank" rel="noopener">Report a problem or suggest a venue</a></div></footer>
+</div>
+
+<!-- ARTIST -->
+<div class="page" id="p-artist">
+  <div class="wrap">
+    <div class="crumbs"><a href="#home">Home</a> / <a href="#artists">Artists</a> / <span id="a-crumb"></span></div>
+    <div class="hero"><h1 id="a-name"></h1><div class="stats" id="a-stats"></div></div>
+    <div id="a-body"></div>
+  </div>
+  <footer><div class="wrap">Collected daily from Portland galleries, museums &amp; art spaces. Always confirm details with the venue before you go. · <a href="https://github.com/oabraham721/pdxartbeat/issues/new" target="_blank" rel="noopener">Report a problem or suggest a venue</a></div></footer>
+</div>
+
+<!-- ON VIEW -->
+<div class="page" id="p-onview">
+  <div class="wrap">
+    <div class="hero">
+      <h1>Every show <em>on view</em> right now.</h1>
+      <div class="stats" id="ov-stats"></div>
+    </div>
+    <div class="filters" id="ov-filters"></div>
+    <div class="grid" id="ov-grid"></div>
+  </div>
+  <footer><div class="wrap">Collected daily from Portland galleries, museums &amp; art spaces. Always confirm details with the venue before you go. · <a href="https://github.com/oabraham721/pdxartbeat/issues/new" target="_blank" rel="noopener">Report a problem or suggest a venue</a></div></footer>
+</div>
+
+<!-- ARTISTS INDEX -->
+<div class="page" id="p-artists">
+  <div class="wrap">
+    <div class="hero">
+      <h1>The <em>artists</em> showing in Portland.</h1>
+      <div class="stats" id="as-stats"></div>
+    </div>
+    <div class="filters" id="as-filters"></div>
+    <div class="letters" id="as-letters"></div>
+    <div id="as-groups"></div>
+  </div>
+  <footer><div class="wrap">Collected daily from Portland galleries, museums &amp; art spaces. Always confirm details with the venue before you go. · <a href="https://github.com/oabraham721/pdxartbeat/issues/new" target="_blank" rel="noopener">Report a problem or suggest a venue</a></div></footer>
+</div>
+
+<!-- SEARCH -->
+<div class="page" id="p-search">
+  <div class="wrap">
+    <div class="hero"><h1 id="s-title"></h1></div>
+    <div class="results" id="s-body"></div>
+  </div>
+  <footer><div class="wrap">Collected daily from Portland galleries, museums &amp; art spaces. Always confirm details with the venue before you go. · <a href="https://github.com/oabraham721/pdxartbeat/issues/new" target="_blank" rel="noopener">Report a problem or suggest a venue</a></div></footer>
+</div>
+
+<!-- MAP -->
+<div class="page" id="p-map">
+  <div class="mapwrap">
+    <div class="side">
+      <h2>Gallery map</h2>
+      <div style="color:var(--muted);font-size:13px;margin-bottom:12px">Plan a gallery walk. Numbers show current shows &amp; events.</div>
+      <div id="vlist"></div>
+    </div>
+    <div id="map"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="data.js"></script>
+<script>
+const { events, venues, coords, generated_at } = window.ART_DATA;
+const PAST = window.ART_DATA.past_events || [];
+const DETAILS = window.ART_DATA.details || {};
+const isoLocal = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+// "Today" is Portland's date from the visitor's clock (not the data's build date), so stale data still hides finished shows.
+const pacificParts = (date = new Date()) => Object.fromEntries(new Intl.DateTimeFormat("en-US", {
+  timeZone: "America/Los_Angeles", year: "numeric", month: "2-digit", day: "2-digit", weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+}).formatToParts(date).map(x => [x.type, x.value]));
+const TODAY = (p => `${p.year}-${p.month}-${p.day}`)(pacificParts());
+const addDays = (iso, n) => { const d = new Date(iso + "T12:00:00"); d.setDate(d.getDate() + n); return isoLocal(d); };
+const fmt = (iso, opts) => new Date(iso + "T12:00:00").toLocaleDateString("en-US", opts);
+const fmtTime = t => { if (!t) return "All day"; let [h, m] = t.split(":").map(Number); const ap = h >= 12 ? "pm" : "am"; h = h % 12 || 12; return m ? `${h}:${String(m).padStart(2,"0")}${ap}` : `${h}${ap}`; };
+const daysBetween = (a, b) => Math.round((new Date(b + "T12:00:00") - new Date(a + "T12:00:00")) / 864e5);
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const label = t => t.replace(/_/g, " ").replace("reception", "").trim();
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+// Safe value for style="background-image:url(...)": percent-encode characters that would end the url().
+const cssUrl = u => esc(String(u).replace(/["'()\\\s]/g, c => "%" + c.charCodeAt(0).toString(16).padStart(2, "0").toUpperCase()));
+const addHours = (hhmm, n) => { const [h, m] = hhmm.split(":").map(Number); return `${String(Math.min(23, h + n)).padStart(2, "0")}:${h + n > 23 ? "59" : String(m).padStart(2, "0")}`; };
+const endTimeOf = e => e.end_time && e.end_time > e.start_time ? e.end_time : addHours(e.start_time, 2);
+
+const isExhibition = e => e.event_type === "exhibition";
+const onViewNow = e => isExhibition(e) && (!e.start_date || e.start_date <= TODAY) && (!e.end_date || e.end_date >= TODAY);
+// One-off events earlier today that have already finished.
+const isOver = e => !isExhibition(e) && e.start_date === TODAY && !!e.start_time && endTimeOf(e) <= pacificNow().hhmm;
+let state = { range: "week", hood: "", type: "" };
+const TYPE_GROUPS = {
+  openings: ["opening_reception", "closing_reception", "art_walk"],
+  talks: ["artist_talk", "screening", "performance"],
+  workshops: ["workshop"],
+  exhibitions: ["exhibition"],
+};
+const typeOk = e => !state.type || TYPE_GROUPS[state.type].includes(e.event_type);
+
+function inRange(e) {
+  const end = state.range === "week" ? addDays(TODAY, 7) : state.range === "month" ? addDays(TODAY, 31) : "9999";
+  return e.start_date && e.start_date >= TODAY && e.start_date <= end;
+}
+const hoodOk = e => !state.hood || e.neighborhood === state.hood;
+
+/* ---------- hours / open status ---------- */
+const DAYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+const DAY_NAMES = { mon: "Mon", tue: "Tue", wed: "Wed", thu: "Thu", fri: "Fri", sat: "Sat", sun: "Sun" };
+function pacificNow() {
+  const p = pacificParts();
+  return { day: p.weekday.toLowerCase().slice(0, 3), hhmm: `${p.hour}:${p.minute}` };
+}
+function openStatus(venueName) {
+  const d = DETAILS[venueName];
+  if (!d) return null;
+  const hasHours = Object.values(d.hours).some(s => s.length);
+  if (!hasHours) return d.by_appointment ? { cls: "appt", text: "By appointment" } : /vary/i.test(d.hours_note) ? { cls: "appt", text: "Hours vary" } : null;
+  const now = pacificNow();
+  const span = (d.hours[now.day] || []).find(([o, c]) => now.hhmm >= o && now.hhmm < c);
+  if (span) return { cls: "open", text: `Open now · closes ${fmtTime(span[1])}` };
+  // i = 7 covers venues open one day a week, checked after closing on that day.
+  for (let i = 0; i <= 7; i++) {
+    const day = DAYS[(DAYS.indexOf(now.day) + i) % 7];
+    const next = (d.hours[day] || []).find(([o]) => i > 0 || o > now.hhmm);
+    if (next) return { cls: "closed", text: `Closed · opens ${i === 0 ? "today" : i === 1 ? "tomorrow" : i === 7 ? "next " + DAY_NAMES[day] : DAY_NAMES[day]} ${fmtTime(next[0])}` };
+  }
+  return { cls: "closed", text: "Closed" };
+}
+const statusHtml = name => { const s = openStatus(name); return s ? `<span class="status ${s.cls}">${esc(s.text)}</span>` : ""; };
+
+/* ---------- cost ---------- */
+const PRICE_LABEL = { free: "Free", suggested_donation: "Donation", ticketed: "Ticketed" };
+function priceOf(e) {
+  if (e.price && e.price !== "unknown") return e.price;
+  const adm = DETAILS[e.venue]?.admission;
+  return adm && adm !== "unknown" ? adm : null;
+}
+const priceHtml = e => { const p = priceOf(e); return p ? `<span class="price ${p}">${PRICE_LABEL[p]}</span>` : ""; };
+
+/* ---------- free museum days ---------- */
+function nthWeekday(year, month, nth, wd) {
+  const idx = DAYS.indexOf(wd);
+  if (nth === -1) { const d = new Date(year, month + 1, 0); while (d.getDay() !== idx) d.setDate(d.getDate() - 1); return d; }
+  const d = new Date(year, month, 1); while (d.getDay() !== idx) d.setDate(d.getDate() + 1);
+  d.setDate(d.getDate() + 7 * (nth - 1)); return d.getMonth() === month ? d : null;
+}
+function upcomingFreeDays(withinDays = 31) {
+  const out = [], end = addDays(TODAY, withinDays), t = new Date(TODAY + "T12:00:00");
+  Object.entries(DETAILS).forEach(([venue, d]) => (d.free_days || []).forEach(fd => {
+    const r = fd.rule, dates = [];
+    if (r.type === "date") dates.push(r.date);
+    if (r.type === "weekly") for (let i = 0; i <= withinDays; i++) { const x = addDays(TODAY, i); if (DAYS[new Date(x + "T12:00:00").getDay()] === r.weekday) { dates.push(x); break; } }
+    if (r.type === "monthly_nth_weekday") for (let m = 0; m < 2; m++) { const x = nthWeekday(t.getFullYear(), t.getMonth() + m, r.nth, r.weekday); if (x) dates.push(isoLocal(x)); }
+    dates.filter(x => x >= TODAY && x <= end).forEach(date => out.push({ venue, date, ...fd }));
+  }));
+  return out.sort((a, b) => a.date.localeCompare(b.date));
+}
+
+/* ---------- calendar ---------- */
+const compact = (day, t) => day.replace(/-/g, "") + (t ? "T" + t.replace(":", "") + "00" : "");
+function calTimes(e) {
+  if (isOver(e)) return null;
+  if (isExhibition(e)) {
+    // Closing-day reminder; or opening day if no end date is known yet.
+    if (e.end_date) return { day: e.end_date, allDay: true, kind: "last" };
+    if (e.start_date && e.start_date > TODAY) return { day: e.start_date, allDay: true, kind: "opens" };
+    return null;
+  }
+  if (!e.start_date) return null;
+  if (e.start_time) return { day: e.start_date, start: e.start_time, end: endTimeOf(e), allDay: false };
+  return { day: e.start_date, allDay: true };
+}
+const calTitle = (e, t) => t.kind === "last" ? `Last day: ${e.title} (${e.venue})` : t.kind === "opens" ? `Opens: ${e.title} (${e.venue})` : `${e.title} @ ${e.venue}`;
+const calLocation = e => `${e.venue}, ${e.address ? e.address + ", " : ""}Portland, OR`;
+function googleCalUrl(e) {
+  const t = calTimes(e); if (!t) return null;
+  const dates = t.allDay ? `${compact(t.day)}/${compact(addDays(t.day, 1))}` : `${compact(t.day, t.start)}/${compact(t.day, t.end)}`;
+  const p = new URLSearchParams({ action: "TEMPLATE", text: calTitle(e, t), dates, ctz: "America/Los_Angeles", location: calLocation(e), details: [e.description, e.url].filter(Boolean).join("\n\n") });
+  return "https://calendar.google.com/calendar/render?" + p;
+}
+// build_site.py writes one .ics per event (same rules as calTimes) into site/ics/.
+const icsUrl = e => calTimes(e) ? `ics/${e.id}.ics` : null;
+const directionsUrl = (name, address) => "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(`${name}, ${address ? address + ", " : ""}Portland, OR`);
+
+/* ---------- artists ---------- */
+const ALL_EVENTS = events.concat(PAST);
+// Some galleries publish names in ALL CAPS; show "AMY BAY" as "Amy Bay".
+const niceName = n => n === n.toUpperCase() && /[A-Z]/.test(n) ? n.toLowerCase().replace(/(^|[\s\-'])(\p{L})/gu, (m, p, c) => p + c.toUpperCase()) : n;
+const artistIndex = {};
+ALL_EVENTS.forEach(e => (e.artists || []).forEach(a => (artistIndex[slug(a)] ||= { name: niceName(a.trim()), events: [] }).events.push(e)));
+const artistLinks = e => (e.artists || []).map(a => `<a href="#artist/${slug(a)}">${esc(niceName(a))}</a>`).join(", ");
+
+function card(e, closing) {
+  const left = e.end_date ? daysBetween(TODAY, e.end_date) : null;
+  let pill = "";
+  if (closing && left !== null) pill = `<span class="pill hot">${left === 0 ? "Closes today" : `Closes in ${left} day${left > 1 ? "s" : ""}`}</span>`;
+  else if (isOver(e)) pill = `<span class="pill">Ended</span>`;
+  else if (!isExhibition(e) && e.start_date) pill = `<span class="pill">${fmt(e.start_date, { weekday: "short", month: "short", day: "numeric" })}${e.start_time ? " · " + fmtTime(e.start_time) : ""}</span>`;
+  else if (e.start_date && e.start_date > TODAY) pill = `<span class="pill">Opens ${fmt(e.start_date, { month: "short", day: "numeric" })}</span>`;
+  else if (e.end_date) pill = `<span class="pill">Through ${fmt(e.end_date, { month: "short", day: "numeric" })}</span>`;
+  else pill = `<span class="pill">On view now</span>`;
+  const img = e.image_url ? `<div class="img" role="img" aria-label="${esc(e.title)}" style="background-image:url(${cssUrl(e.image_url)})">${pill}</div>`
+                          : `<div class="img ph"><span aria-hidden="true">${esc(e.venue[0])}</span>${pill}</div>`;
+  const names = (e.artists || []).map(niceName);
+  return `<a class="card" href="#event/${e.id}">${img}<div class="body">
+    <h4>${esc(e.title)}</h4>
+    ${names.length ? `<div class="artists">${esc(names.slice(0, 3).join(", "))}${names.length > 3 ? " +" + (names.length - 3) : ""}</div>` : ""}
+    <div class="meta"><span>${esc(e.venue)}</span><span style="display:flex;gap:5px;align-items:center">${priceHtml(e)}<span class="hood">${esc(e.neighborhood)}</span></span></div></div></a>`;
+}
+
+function renderHome() {
+  const evs = events.filter(hoodOk);
+  const listed = evs.filter(typeOk);
+  const upcoming = listed.filter(e => !isExhibition(e) && inRange(e) && !isOver(e))
+    .concat(listed.filter(e => isExhibition(e) && e.start_date > TODAY && inRange(e)));
+  const byDay = {};
+  upcoming.forEach(e => (byDay[e.start_date] ||= []).push(e));
+  const rangeText = { week: "this week", month: "this month", all: "coming up" }[state.range];
+  document.getElementById("week-title").textContent = `Openings & events ${rangeText}`;
+  const row = e => `
+      <a class="row" href="#event/${e.id}"><div class="time">${e.start_time ? fmtTime(e.start_time) : "—"}</div>
+      <div><span class="badge b-${e.event_type}">${isExhibition(e) ? "opens" : label(e.event_type)}</span> ${priceHtml(e)}
+      <div class="t">${esc(e.title)}</div><div class="v">${esc(e.venue)} · ${esc(e.neighborhood)}</div></div></a>`;
+  const days = Object.keys(byDay).sort();
+  document.getElementById("week").innerHTML = days.slice(0, 12).map(d => {
+    const list = byDay[d].sort((a, b) => (a.start_time || "99").localeCompare(b.start_time || "99"));
+    const extra = list.length > 5 ? `<details class="more"><summary>+${list.length - 5} more</summary>${list.slice(5).map(row).join("")}</details>` : "";
+    const rel = d === TODAY ? "Today" : d === addDays(TODAY, 1) ? "Tomorrow" : fmt(d, { weekday: "long" });
+    return `<div class="day"><h3><b>${rel}</b> · ${fmt(d, { month: "short", day: "numeric" })}</h3>${list.slice(0, 5).map(row).join("")}${extra}</div>`;
+  }).join("") + (days.length > 12 ? `<div class="day" style="display:grid;place-items:center;color:var(--muted)">+${days.length - 12} more days — narrow the filters</div>` : "")
+    || `<div style="color:var(--muted)">Nothing scheduled in this range.</div>`;
+
+  const showShows = !state.type || state.type === "exhibitions";
+  document.getElementById("closing-sec").style.display = document.getElementById("onview").style.display = showShows ? "" : "none";
+  const onview = evs.filter(onViewNow);
+  const closing = onview.filter(e => e.end_date && daysBetween(TODAY, e.end_date) <= 10).sort((a, b) => a.end_date.localeCompare(b.end_date));
+  document.getElementById("closing").innerHTML = closing.map(e => card(e, true)).join("") || `<div style="color:var(--muted)">Nothing closing in the next 10 days.</div>`;
+  const withImg = onview.filter(e => e.image_url), noImg = onview.filter(e => !e.image_url);
+  // Rotate through venues so one large museum doesn't fill the grid, and skip repeated images.
+  const seenImg = new Set(), byVenue = {};
+  withImg.concat(noImg).forEach(e => {
+    if (e.image_url && seenImg.has(e.image_url)) e = { ...e, image_url: "" };
+    if (e.image_url) seenImg.add(e.image_url);
+    (byVenue[e.venue] ||= []).push(e);
+  });
+  const mixed = [];
+  for (let i = 0; mixed.length < onview.length; i++) {
+    const before = mixed.length;
+    Object.values(byVenue).forEach(list => list[i] && mixed.push(list[i]));
+    if (mixed.length === before) break;
+  }
+  document.getElementById("grid").innerHTML = mixed.slice(0, 12).map(e => card(e)).join("") || `<div style="color:var(--muted)">No shows on view in this area.</div>`;
+  document.getElementById("onview-count").textContent = `See all ${onview.length} shows →`;
+
+  const openings = evs.filter(e => e.event_type.includes("reception") && !isOver(e) && e.start_date >= TODAY && e.start_date <= addDays(TODAY, 7)).length;
+  document.getElementById("stats").innerHTML = `
+    <span class="stat"><b>${upcoming.length}</b> events ${rangeText}</span>
+    <span class="stat"><b>${openings}</b> opening receptions this week</span>
+    <span class="stat"><b>${onview.length}</b> shows on view</span>
+    <span class="stat"><b>${closing.length}</b> closing soon</span>
+    <span class="stat"><b>${state.hood ? venues.filter(v => v.neighborhood === state.hood).length : venues.length}</b> venues</span>`;
+
+  const free = upcomingFreeDays(31);
+  document.getElementById("freebanner").innerHTML = free.length ? `<div class="freebanner"><b class="t">🎟 Free museum days</b>
+    ${free.slice(0, 4).map(f => `<a href="#venue/${slug(f.venue)}" title="${esc(f.description)}"><b>${f.date === TODAY ? "Today" : fmt(f.date, { weekday: "short", month: "short", day: "numeric" })}</b> · ${esc(f.venue)}${f.start_time ? " · " + fmtTime(f.start_time) + (f.end_time ? "–" + fmtTime(f.end_time) : "") : ""}</a>`).join("")}</div>` : "";
+}
+
+function buildFilters() {
+  const hoods = [...new Set(events.map(e => e.neighborhood).filter(Boolean))].sort();
+  const f = document.getElementById("filters");
+  f.insertAdjacentHTML("beforeend", ["Pearl", "Alberta", "Southeast", "Downtown", "North", "Old Town"].filter(h => hoods.includes(h)).map(h => `<button type="button" class="chip" data-hood="${h}">${h}</button>`).join("")
+    + `<span class="sep"></span><select id="type-filter" aria-label="Event type"><option value="">All event types</option><option value="openings">Openings &amp; receptions</option><option value="talks">Talks &amp; performances</option><option value="workshops">Workshops</option><option value="exhibitions">Exhibitions</option></select>`);
+  document.getElementById("type-filter").addEventListener("change", ev => { state.type = ev.target.value; renderHome(); });
+  f.addEventListener("click", ev => {
+    const c = ev.target.closest(".chip"); if (!c) return;
+    if (c.dataset.range) { state.range = c.dataset.range; f.querySelectorAll("[data-range]").forEach(x => x.classList.toggle("on", x === c)); }
+    if (c.dataset.hood !== undefined) { state.hood = c.dataset.hood; f.querySelectorAll("[data-hood]").forEach(x => x.classList.toggle("on", x === c)); }
+    renderHome();
+  });
+}
+
+let vmap;
+// Esri light-gray canvas: no API key and no Referer requirement (OSM's tile servers block file:// pages).
+const ESRI = "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/";
+function baseTiles() {
+  return L.layerGroup([
+    L.tileLayer(ESRI + "World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16, attribution: "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors" }),
+    L.tileLayer(ESRI + "World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16 }),
+  ]);
+}
+function renderVenue(s) {
+  const v = venues.find(x => slug(x.name) === s);
+  if (!v) {
+    document.getElementById("v-crumb").textContent = document.getElementById("v-name").textContent = "Venue not found";
+    ["v-hood", "v-info", "v-grid"].forEach(id => document.getElementById(id).innerHTML = "");
+    document.getElementById("vmap").style.display = "none";
+    ["v-site", "v-directions"].forEach(id => document.getElementById(id).style.display = "none");
+    return;
+  }
+  document.getElementById("v-crumb").textContent = v.name;
+  document.getElementById("v-name").textContent = v.name;
+  document.getElementById("v-hood").textContent = v.neighborhood;
+  const site = document.getElementById("v-site");
+  site.style.display = v.website ? "" : "none";
+  site.href = v.website || "#";
+  site.textContent = /instagram\.com/.test(v.website) ? "Instagram" : "Visit website";
+  const dir = document.getElementById("v-directions");
+  dir.style.display = "";
+  dir.href = directionsUrl(v.name, v.address);
+  const host = (v.website || "").replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+  const d = DETAILS[v.name];
+  const today = pacificNow().day;
+  const hoursRows = d && Object.values(d.hours).some(s => s.length)
+    ? `<table class="hours">${["mon", "tue", "wed", "thu", "fri", "sat", "sun"].map(k => `<tr class="${k === today ? "today" : ""}"><td>${DAY_NAMES[k]}</td><td>${d.hours[k].length ? d.hours[k].map(([o, c]) => `${fmtTime(o)}–${fmtTime(c)}`).join(", ") : "Closed"}</td></tr>`).join("")}</table>` : "";
+  const hoursHtml = d ? `${statusHtml(v.name)}${hoursRows}${d.by_appointment && hoursRows ? `<div style="font-size:12.5px;color:var(--muted)">Also by appointment</div>` : ""}${d.hours_note ? `<div style="font-size:12.5px;color:var(--muted)">${esc(d.hours_note)}</div>` : ""}` : `<span style="color:var(--muted)">Not listed</span>`;
+  const admission = d && d.admission !== "unknown" ? `<span class="price ${d.admission}">${PRICE_LABEL[d.admission]}</span> ${esc(d.admission_note)}` : `<span style="color:var(--muted)">Not listed</span>`;
+  const freeDays = d && d.free_days?.length ? `<dt>Free days</dt><dd>${d.free_days.map(f => esc(f.description)).join("<br>")}</dd>` : "";
+  document.getElementById("v-info").innerHTML = `<dt>Address</dt><dd>${v.address ? esc(v.address) + ", " : ""}Portland, OR</dd>
+    <dt>Hours</dt><dd>${hoursHtml}</dd>
+    <dt>Admission</dt><dd>${admission}</dd>${freeDays}
+    <dt>Type</dt><dd style="text-transform:capitalize">${esc(v.type.replace("_", " "))}</dd>
+    <dt>Website</dt><dd>${esc(host)}</dd>`;
+  const evs = events.filter(e => e.venue === v.name).sort((a, b) => (a.start_date || "0000").localeCompare(b.start_date || "0000"));
+  document.getElementById("v-grid").innerHTML = evs.map(e => card(e)).join("") || `<div style="color:var(--muted)">No current listings.</div>`;
+  const c = coords[v.name];
+  document.getElementById("vmap").style.display = c ? "" : "none";
+  if (c) {
+    if (!vmap) { vmap = L.map("vmap", { maxZoom: 16, zoomControl: false, attributionControl: true }); baseTiles().addTo(vmap); }
+    vmap.setView(c, 15); vmap.eachLayer(l => l instanceof L.Marker && vmap.removeLayer(l));
+    L.marker(c, { icon: L.divIcon({ className: "", html: `<div class="pin">${evs.length}</div>`, iconSize: [28, 28] }) }).addTo(vmap);
+    setTimeout(() => vmap.invalidateSize(), 50);
+  }
+}
+
+let bigmap;
+function renderMap() {
+  const counts = {}; events.filter(e => !isOver(e)).forEach(e => counts[e.venue] = (counts[e.venue] || 0) + 1);
+  const list = venues.filter(v => coords[v.name]).sort((a, b) => (counts[b.name] || 0) - (counts[a.name] || 0));
+  document.getElementById("vlist").innerHTML = list.map(v => `<a class="vrow" href="#venue/${slug(v.name)}"><div><b>${esc(v.name)}</b><small>${esc(v.address)} · ${esc(v.neighborhood)}</small>${statusHtml(v.name) ? "<br>" + statusHtml(v.name) : ""}</div><span class="count">${counts[v.name] || 0}</span></a>`).join("");
+  if (!bigmap) {
+    bigmap = L.map("map", { maxZoom: 16, attributionControl: true }).setView([45.528, -122.665], 13);
+    baseTiles().addTo(bigmap);
+    list.forEach(v => L.marker(coords[v.name], { icon: L.divIcon({ className: "", html: `<div class="pin${counts[v.name] ? "" : " zero"}">${counts[v.name] || 0}</div>`, iconSize: [28, 28] }) })
+      .addTo(bigmap).bindPopup(`<b>${esc(v.name)}</b><br>${esc(v.address)}<br>${statusHtml(v.name)}<br><a href="#venue/${slug(v.name)}">${counts[v.name] || 0} shows &amp; events →</a> · <a href="${esc(directionsUrl(v.name, v.address))}" target="_blank">Directions</a>`));
+  }
+  setTimeout(() => bigmap.invalidateSize(), 50);
+}
+
+function renderOnView(sortBy) {
+  const hoods = [...new Set(events.filter(onViewNow).map(e => e.neighborhood).filter(Boolean))].sort();
+  const list = events.filter(onViewNow).filter(hoodOk);
+  const sort = sortBy || state.onviewSort || "closing";
+  state.onviewSort = sort;
+  // Shows with no end date go last when sorting by closing date.
+  list.sort(sort === "closing" ? (a, b) => (a.end_date || "9999").localeCompare(b.end_date || "9999")
+                               : (a, b) => a.venue.localeCompare(b.venue) || a.title.localeCompare(b.title));
+  document.getElementById("ov-stats").innerHTML = `
+    <span class="stat"><b>${list.length}</b> shows</span>
+    <span class="stat"><b>${new Set(list.map(e => e.venue)).size}</b> venues</span>
+    <span class="stat"><b>${list.filter(e => priceOf(e) === "free").length}</b> free to see</span>`;
+  const f = document.getElementById("ov-filters");
+  f.innerHTML = `<button type="button" class="chip${sort === "closing" ? " on" : ""}" data-sort="closing">Closing soonest</button><button type="button" class="chip${sort === "venue" ? " on" : ""}" data-sort="venue">By venue</button><span class="sep"></span>`
+    + [["", "All areas"], ...hoods.map(h => [h, h])].map(([v, t]) => `<button type="button" class="chip${v === state.hood ? " on" : ""}" data-hood="${esc(v)}">${esc(t)}</button>`).join("");
+  f.onclick = ev => {
+    const c = ev.target.closest(".chip"); if (!c) return;
+    if (c.dataset.sort) renderOnView(c.dataset.sort);
+    if (c.dataset.hood !== undefined) { state.hood = c.dataset.hood; syncHomeHoodChips(); renderHome(); renderOnView(); }
+  };
+  const left = e => e.end_date ? daysBetween(TODAY, e.end_date) : null;
+  document.getElementById("ov-grid").innerHTML = list.map(e => card(e, left(e) !== null && left(e) <= 10)).join("") || `<div style="color:var(--muted)">No shows on view in this area.</div>`;
+}
+const syncHomeHoodChips = () => document.querySelectorAll("#filters [data-hood]").forEach(x => x.classList.toggle("on", x.dataset.hood === state.hood));
+
+function route() {
+  const h = location.hash.slice(1) || "home";
+  const [page, arg] = h.split("/");
+  const known = ["home", "onview", "venue", "venues", "artists", "artist", "event", "search", "map"];
+  const target = known.includes(page) ? page : "home";
+  document.querySelectorAll(".page").forEach(p => p.classList.toggle("show", p.id === "p-" + target));
+  const navKey = { venue: "venues", artist: "artists" }[target] || target;
+  document.querySelectorAll("nav a").forEach(a => a.classList.toggle("active", a.dataset.nav === navKey));
+  document.querySelector("header").classList.remove("open");
+  document.getElementById("burger").setAttribute("aria-expanded", "false");
+  if (target !== "search") document.getElementById("q").value = "";
+  if (target === "home") renderHome();
+  if (target === "onview") renderOnView(arg === "closing" ? "closing" : undefined);
+  if (target === "venue") renderVenue(arg);
+  if (target === "venues") renderVenues();
+  if (target === "artists") renderArtists();
+  if (target === "event") renderEvent(arg);
+  if (target === "artist") renderArtist(arg);
+  if (target === "search") renderSearch(decodeURIComponent(arg || ""));
+  if (target === "map") renderMap();
+  window.scrollTo(0, 0);
+}
+
+document.getElementById("burger").addEventListener("click", () => {
+  const open = document.querySelector("header").classList.toggle("open");
+  document.getElementById("burger").setAttribute("aria-expanded", open);
+});
+// Keep screen-reader "pressed" state in sync with the visual .on state of every filter chip.
+new MutationObserver(() => document.querySelectorAll(".chip").forEach(c => {
+  const pressed = String(c.classList.contains("on"));
+  if (c.getAttribute("aria-pressed") !== pressed) c.setAttribute("aria-pressed", pressed);
+})).observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ["class"] });
+// On the live site, offer a webcal:// link so calendar apps subscribe (and keep updating) instead of importing once.
+if (location.protocol.startsWith("http")) {
+  document.getElementById("subscribe").href = "webcal://" + location.host + location.pathname.replace(/[^/]*$/, "") + "events.ics";
+}
+
+function whenText(e) {
+  const d = x => fmt(x, { weekday: "long", month: "long", day: "numeric" });
+  if (isExhibition(e)) {
+    if (e.start_date && e.end_date) return `${fmt(e.start_date, { month: "short", day: "numeric" })} – ${fmt(e.end_date, { month: "short", day: "numeric", year: "numeric" })}`;
+    if (e.end_date) return `On view through ${d(e.end_date)}`;
+    if (e.start_date) return `Opens ${d(e.start_date)}`;
+    return "On view now";
+  }
+  if (!e.start_date) return "Date to be announced";
+  return d(e.start_date) + (e.start_time ? ` · ${fmtTime(e.start_time)}${e.end_time ? "–" + fmtTime(e.end_time) : ""}` : "");
+}
+
+function renderEvent(id) {
+  const e = ALL_EVENTS.find(x => x.id === id);
+  if (!e) {
+    document.getElementById("e-crumbs").innerHTML = `<a href="#home">Home</a> / Event not found`;
+    document.getElementById("e-head").innerHTML = `<div><h1>Event not found</h1><p>It may have ended or been removed. <a href="#home" style="text-decoration:underline">Back to this week</a></p></div>`;
+    document.getElementById("e-more").innerHTML = "";
+    return;
+  }
+  document.getElementById("e-crumbs").innerHTML = `<a href="#home">Home</a> / <a href="#venue/${slug(e.venue)}">${esc(e.venue)}</a> / ${esc(e.title)}`;
+  const t = calTimes(e), g = googleCalUrl(e), ics = icsUrl(e);
+  const calNote = !t ? "" : t.kind === "last" ? "Adds a reminder for the show's last day so you don't miss it." : t.kind === "opens" ? "Adds a reminder for opening day." : "Adds it to your calendar.";
+  const isPast = !events.includes(e) || isOver(e);
+  const price = priceOf(e);
+  const priceLine = price ? `${priceHtml(e)} ${esc(e.price_note || (DETAILS[e.venue]?.admission === price ? DETAILS[e.venue].admission_note : ""))}` : "";
+  document.getElementById("e-head").innerHTML = `
+    <div class="ehero" ${e.image_url ? `role="img" aria-label="${esc(e.title)}" style="background-image:url(${cssUrl(e.image_url)})"` : `aria-hidden="true"`}>${e.image_url ? "" : esc(e.venue[0])}</div>
+    <div>
+      <span class="badge b-${e.event_type}">${esc(label(e.event_type) || e.event_type)}</span>
+      <h1>${esc(e.title)}</h1>
+      <div class="when">${whenText(e)}</div>
+      ${isPast ? `<div class="status closed" style="margin:4px 0">This event has ended</div>` : ""}
+      <div><a href="#venue/${slug(e.venue)}"><b>${esc(e.venue)}</b></a>${e.address ? " · " + esc(e.address) : ""}${e.neighborhood ? ` · <span class="hood">${esc(e.neighborhood)}</span>` : ""}</div>
+      <div style="margin-top:6px">${statusHtml(e.venue)}</div>
+      ${priceLine ? `<div style="margin-top:8px">${priceLine}</div>` : ""}
+      ${e.artists?.length ? `<div class="alist" style="margin-top:14px">Artists: ${artistLinks(e)}</div>` : ""}
+      ${e.description ? `<p class="desc">${esc(e.description)}</p>` : ""}
+      <div class="calbtns">
+        ${g && !isPast ? `<a class="btn sm" href="${esc(g)}" target="_blank">+ Google Calendar</a>` : ""}
+        ${ics && !isPast ? `<a class="btn sm ghost" href="${esc(ics)}" download="${slug(e.title)}.ics">+ Apple / Outlook</a>` : ""}
+        <a class="btn sm ghost" href="${esc(directionsUrl(e.venue, e.address))}" target="_blank">Directions</a>
+        ${e.url ? `<a class="btn sm ghost" href="${esc(e.url)}" target="_blank">Event page ↗</a>` : ""}
+      </div>
+      ${calNote && !isPast ? `<div style="font-size:12px;color:var(--muted)">${calNote}</div>` : ""}
+    </div>`;
+  const more = events.filter(x => x.venue === e.venue && x.id !== e.id && !isOver(x))
+    .sort((a, b) => (a.start_date || "0000").localeCompare(b.start_date || "0000"));
+  document.getElementById("e-more").innerHTML = more.length ? `<div class="sec-head"><h2>Also at ${esc(e.venue)}</h2><a href="#venue/${slug(e.venue)}">Venue page →</a></div><div class="grid">${more.slice(0, 4).map(x => card(x)).join("")}</div>` : "";
+}
+
+function renderArtist(s) {
+  const a = artistIndex[s];
+  if (!a) {
+    document.getElementById("a-name").textContent = document.getElementById("a-crumb").textContent = "Artist not found";
+    document.getElementById("a-stats").innerHTML = document.getElementById("a-body").innerHTML = "";
+    return;
+  }
+  document.getElementById("a-crumb").textContent = a.name;
+  document.getElementById("a-name").textContent = a.name;
+  const current = a.events.filter(e => events.includes(e)), past = a.events.filter(e => !events.includes(e));
+  const venuesShown = [...new Set(a.events.map(e => e.venue))];
+  document.getElementById("a-stats").innerHTML = `
+    <span class="stat"><b>${current.length}</b> current &amp; upcoming</span>
+    <span class="stat"><b>${past.length}</b> past</span>
+    <span class="stat">Shown at <b>${venuesShown.map(v => `<a href="#venue/${slug(v)}">${esc(v)}</a>`).join(", ")}</b></span>`;
+  document.getElementById("a-body").innerHTML =
+    `<section><div class="sec-head"><h2>Current &amp; upcoming</h2></div><div class="grid">${current.map(e => card(e)).join("") || `<div style="color:var(--muted)">Nothing listed right now.</div>`}</div></section>
+     <section class="past"><div class="sec-head"><h2>Past shows</h2></div><div class="grid">${past.map(e => card(e)).join("") || `<div style="color:var(--muted)">The archive fills in as shows close — past shows will appear here.</div>`}</div></section>`;
+}
+
+let artistFilter = "all";
+const sortKey = name => { const parts = name.trim().split(/\s+/); return (parts.length > 1 ? parts[parts.length - 1] + " " + parts.slice(0, -1).join(" ") : name).toLowerCase(); };
+
+function artistSummary(a) {
+  const cur = a.events.filter(e => events.includes(e));
+  const now = cur.find(onViewNow);
+  const next = cur.filter(e => e.start_date && e.start_date > TODAY).sort((x, y) => x.start_date.localeCompare(y.start_date))[0];
+  const venuesShown = [...new Set(a.events.map(e => e.venue))];
+  const img = a.events.find(e => e.image_url)?.image_url;
+  let when = null;
+  if (now) when = { cls: "now", text: `On view${now.end_date ? " through " + fmt(now.end_date, { month: "short", day: "numeric" }) : " now"}` };
+  else if (next) when = { cls: "soon", text: `${isExhibition(next) ? "Opens" : "Next"} ${fmt(next.start_date, { month: "short", day: "numeric" })}` };
+  else if (cur.length) when = { cls: "", text: `${cur.length} listing${cur.length > 1 ? "s" : ""}` };
+  return { now: !!now, upcoming: !now && !!next, current: cur.length > 0, venuesShown, img, when };
+}
+
+function renderArtists() {
+  const list = Object.entries(artistIndex).map(([s, a]) => ({ s, a, sum: artistSummary(a) }))
+    .sort((x, y) => sortKey(x.a.name).localeCompare(sortKey(y.a.name)));
+  const filtered = list.filter(x => artistFilter === "all" || (artistFilter === "now" ? x.sum.now : artistFilter === "upcoming" ? x.sum.upcoming : true));
+
+  document.getElementById("as-stats").innerHTML = `
+    <span class="stat"><b>${list.length}</b> artists</span>
+    <span class="stat"><b>${list.filter(x => x.sum.now).length}</b> on view now</span>
+    <span class="stat"><b>${list.filter(x => x.sum.upcoming).length}</b> opening soon</span>
+    <span class="stat"><b>${new Set(list.flatMap(x => x.sum.venuesShown)).size}</b> venues</span>`;
+
+  const f = document.getElementById("as-filters");
+  f.innerHTML = [["all", "All artists"], ["now", "On view now"], ["upcoming", "Opening soon"]]
+    .map(([k, t]) => `<button type="button" class="chip${k === artistFilter ? " on" : ""}" data-f="${k}">${t}</button>`).join("");
+  f.onclick = ev => { const c = ev.target.closest(".chip"); if (c) { artistFilter = c.dataset.f; renderArtists(); } };
+
+  const groups = {};
+  filtered.forEach(x => { const L = (sortKey(x.a.name)[0] || "#").toUpperCase(); (groups[/[A-Z]/.test(L) ? L : "#"] ||= []).push(x); });
+  document.getElementById("as-letters").innerHTML = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
+    .map(L => groups[L] ? `<button type="button" data-letter="${L}" aria-label="Jump to ${L}">${L}</button>` : `<span>${L}</span>`).join("");
+  document.getElementById("as-letters").onclick = ev => {
+    const L = ev.target.dataset.letter;
+    if (L) document.getElementById("letter-" + L)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  document.getElementById("as-groups").innerHTML = Object.keys(groups).sort().map(L => `
+    <div class="agroup" id="letter-${L}"><h2>${L}</h2><div class="agrid">${groups[L].map(({ s, a, sum }) => `
+      <a class="acard" href="#artist/${s}">
+        <div class="av" style="${sum.img ? `background-image:url(${cssUrl(sum.img)})` : ""}">${sum.img ? "" : esc(a.name[0])}</div>
+        <div><b>${esc(a.name)}</b>
+          <div class="where">${esc(sum.venuesShown.slice(0, 2).join(", "))}${sum.venuesShown.length > 2 ? ` +${sum.venuesShown.length - 2}` : ""}</div>
+          ${sum.when ? `<div class="when2 ${sum.when.cls}">${esc(sum.when.text)}</div>` : ""}
+        </div></a>`).join("")}</div></div>`).join("")
+    || `<p style="color:var(--muted)">No artists match this filter.</p>`;
+}
+
+function renderSearch(q) {
+  document.getElementById("q").value = q;
+  const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+  const hit = text => terms.every(t => text.toLowerCase().includes(t));
+  document.getElementById("s-title").innerHTML = q ? `Results for <em>“${esc(q)}”</em>` : "Search";
+  if (!terms.length) { document.getElementById("s-body").innerHTML = ""; return; }
+  const artists = Object.entries(artistIndex).filter(([, a]) => hit(a.name));
+  const vs = venues.filter(v => hit(`${v.name} ${v.neighborhood} ${v.address}`));
+  const evs = events.filter(e => hit(`${e.title} ${(e.artists || []).join(" ")} ${e.venue} ${e.description} ${e.neighborhood}`));
+  const pastEvs = PAST.filter(e => hit(`${e.title} ${(e.artists || []).join(" ")} ${e.venue}`));
+  document.getElementById("s-body").innerHTML = (!artists.length && !vs.length && !evs.length && !pastEvs.length)
+    ? `<p style="color:var(--muted)">No matches. Try an artist's last name, a gallery, or a word like “textile”.</p>`
+    : `${artists.length ? `<h3>Artists (${artists.length})</h3><div class="pills">${artists.slice(0, 30).map(([s, a]) => `<a href="#artist/${s}">${esc(a.name)} <small>${a.events.length}</small></a>`).join("")}</div>` : ""}
+       ${vs.length ? `<h3>Venues (${vs.length})</h3><div class="pills">${vs.map(v => `<a href="#venue/${slug(v.name)}">${esc(v.name)} <small>${esc(v.neighborhood)}</small></a>`).join("")}</div>` : ""}
+       ${evs.length ? `<h3>Shows &amp; events (${evs.length})</h3><div class="grid">${evs.map(e => card(e)).join("")}</div>` : ""}
+       ${pastEvs.length ? `<h3>Past (${pastEvs.length})</h3><div class="grid past">${pastEvs.map(e => card(e)).join("")}</div>` : ""}`;
+}
+
+document.getElementById("search-form").addEventListener("submit", ev => {
+  ev.preventDefault();
+  location.hash = "search/" + encodeURIComponent(document.getElementById("q").value.trim());
+});
+document.getElementById("q").addEventListener("input", ev => {
+  const q = ev.target.value.trim();
+  if (q.length < 2) return;
+  // Live results without adding a history entry per keystroke.
+  history.replaceState(null, "", "#search/" + encodeURIComponent(q));
+  document.querySelectorAll(".page").forEach(p => p.classList.toggle("show", p.id === "p-search"));
+  renderSearch(q);
+});
+
+let venuesHood = "";
+function renderVenues() {
+  const HOOD_ORDER = ["Pearl", "Northwest", "Old Town", "Downtown", "Washington Park", "Central Eastside", "Southeast", "Southwest", "Alberta", "North", "Eliot"];
+  const byVenue = {};
+  events.forEach(e => (byVenue[e.venue] ||= []).push(e));
+  const hoods = [...new Set(venues.map(v => v.neighborhood).filter(Boolean))]
+    .sort((a, b) => (HOOD_ORDER.indexOf(a) + 1 || 99) - (HOOD_ORDER.indexOf(b) + 1 || 99));
+
+  const f = document.getElementById("vs-filters");
+  f.innerHTML = [["", "All areas"], ...hoods.map(h => [h, h])]
+    .map(([val, txt]) => `<button type="button" class="chip${val === venuesHood ? " on" : ""}" data-hood="${esc(val)}">${esc(txt)}</button>`).join("");
+  f.onclick = ev => { const c = ev.target.closest(".chip"); if (c) { venuesHood = c.dataset.hood; renderVenues(); } };
+
+  const withShows = venues.filter(v => byVenue[v.name]).length;
+  document.getElementById("vs-stats").innerHTML = `
+    <span class="stat"><b>${venues.length}</b> venues</span>
+    <span class="stat"><b>${withShows}</b> with current listings</span>
+    <span class="stat"><b>${hoods.length}</b> neighborhoods</span>`;
+
+  const vcard = v => {
+    const evs = (byVenue[v.name] || []).slice().sort((a, b) => (a.start_date || "0000").localeCompare(b.start_date || "0000"));
+    const img = evs.find(e => e.image_url);
+    const now = evs.find(onViewNow) || evs[0];
+    const teaser = now
+      ? `<div class="now"><span>${onViewNow(now) ? "Now" : "Next"}:</span> ${esc(now.title)}${evs.length > 1 ? ` <span style="color:var(--muted);font-weight:400">+${evs.length - 1} more</span>` : ""}</div>`
+      : `<div class="now none">${v.status === "relocating" ? "Relocating — reopening soon" : "No current listings"}</div>`;
+    const thumb = img ? `<div class="thumb" style="background-image:url(${cssUrl(img.image_url)})"></div>` : `<div class="thumb">${esc(v.name[0])}</div>`;
+    return `<a class="vcard" href="#venue/${slug(v.name)}">${thumb}<div class="vb">
+      <span class="type-tag">${esc(v.type.replace("_", " "))}</span><b>${esc(v.name)}</b>
+      <span class="addr">${esc(v.address || "Portland, OR")}</span>${statusHtml(v.name)}${teaser}</div></a>`;
+  };
+
+  document.getElementById("vs-groups").innerHTML = hoods
+    .filter(h => !venuesHood || h === venuesHood)
+    .map(h => {
+      const list = venues.filter(v => v.neighborhood === h).sort((a, b) => (byVenue[b.name]?.length || 0) - (byVenue[a.name]?.length || 0) || a.name.localeCompare(b.name));
+      return `<div class="vgroup"><h2>${esc(h)} <small>${list.length} venue${list.length > 1 ? "s" : ""}</small></h2><div class="vgrid">${list.map(vcard).join("")}</div></div>`;
+    }).join("");
+}
+
+document.getElementById("updated").textContent = "Updated " + new Date(generated_at).toLocaleString("en-US", { timeZone: "America/Los_Angeles", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+buildFilters(); renderHome();
+window.addEventListener("hashchange", route); route();
+</script>
+</body>
+</html>

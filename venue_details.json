@@ -1,0 +1,1426 @@
+{
+ "Blackfish Gallery": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [
+    [
+     "11:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "11:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "11:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "11:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "11:00",
+     "17:00"
+    ]
+   ]
+  },
+  "by_appointment": true,
+  "hours_note": "",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.blackfish.com/",
+   "https://www.blackfish.com/dev-about",
+   "https://www.blackfish.com/contact-8",
+   "https://www.blackfish.com/exhibition-groups/current-exhibition-november-2026"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Gallery 114": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ]
+  },
+  "by_appointment": true,
+  "hours_note": "Closed last Sunday of the month and on July 4th",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.gallery114.com/",
+   "https://www.gallery114.com/contact",
+   "https://www.gallery114.com/ourstory"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Laura Vincent Design & Gallery": {
+  "hours": {
+   "mon": [],
+   "tue": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "wed": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "thu": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "fri": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "sat": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "sun": []
+  },
+  "by_appointment": true,
+  "hours_note": "",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://lvdesignandgallery.com/",
+   "https://lvdesignandgallery.com/contact/",
+   "https://lvdesignandgallery.com/contact/form/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Waterstone Gallery": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "thu": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "fri": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "sat": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "sun": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ]
+  },
+  "by_appointment": false,
+  "hours_note": "Artist reception, first Thursday 5 - 8pm",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://waterstonegallery.com/",
+   "https://waterstonegallery.com/about",
+   "https://waterstonegallery.com/contact"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Elizabeth Leach Gallery": {
+  "hours": {
+   "mon": [],
+   "tue": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "wed": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "thu": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "fri": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "sat": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "sun": []
+  },
+  "by_appointment": false,
+  "hours_note": "",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.elizabethleach.com/",
+   "https://www.elizabethleach.com/about/",
+   "https://www.elizabethleach.com/exhibitions/272/overview/",
+   "https://www.elizabethleach.com/contact/form/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Froelick Gallery": {
+  "hours": {
+   "mon": [],
+   "tue": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "wed": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "thu": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "fri": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "sat": [
+    [
+     "11:00",
+     "17:30"
+    ]
+   ],
+   "sun": []
+  },
+  "by_appointment": true,
+  "hours_note": "Open First Thursday until 8pm",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://froelickgallery.com/",
+   "https://froelickgallery.com/contact/",
+   "https://froelickgallery.com/contact/form/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Augen Gallery": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [
+    [
+     "11:30",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "11:30",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "11:30",
+     "17:00"
+    ]
+   ],
+   "sun": []
+  },
+  "by_appointment": true,
+  "hours_note": "Open by appointment other days/times",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.augengallery.com/",
+   "https://www.augengallery.com/about/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Blue Sky Gallery": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "sun": []
+  },
+  "by_appointment": true,
+  "hours_note": "Gallery closes for installation on Wednesdays prior to First Thursday Openings",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.blueskygallery.org/",
+   "https://www.blueskygallery.org/about-us",
+   "https://www.blueskygallery.org/visit",
+   "https://www.blueskygallery.org/about-us"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "The Black Gallery": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [],
+   "fri": [],
+   "sat": [],
+   "sun": [
+    [
+     "13:00",
+     "16:00"
+    ]
+   ]
+  },
+  "by_appointment": true,
+  "hours_note": "Hours not listed",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://theblackgallerypdx.com/",
+   "https://theblackgallerypdx.com/about",
+   "https://theblackgallerypdx.com/contact-form"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Center for Contemporary Art & Culture (PNCA)": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [],
+   "fri": [],
+   "sat": [],
+   "sun": []
+  },
+  "by_appointment": false,
+  "hours_note": "Hours not listed",
+  "admission": "unknown",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://pnca.willamette.edu/",
+   "https://pnca.willamette.edu/request-info/",
+   "https://pnca.willamette.edu/admissions/visit/",
+   "https://pnca.willamette.edu/admissions/apply/",
+   "https://pnca.willamette.edu/admissions/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "PDX Contemporary Art": {
+  "hours": {
+   "mon": [],
+   "tue": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sun": []
+  },
+  "by_appointment": true,
+  "hours_note": "Open First Thursdays until 7:00 pm",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://pdxcontemporaryart.com/",
+   "https://pdxcontemporaryart.com/about",
+   "https://pdxcontemporaryart.com/contact"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Russo Lee Gallery": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "thu": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "fri": [
+    [
+     "10:30",
+     "17:30"
+    ]
+   ],
+   "sat": [
+    [
+     "11:00",
+     "17:00"
+    ]
+   ],
+   "sun": []
+  },
+  "by_appointment": true,
+  "hours_note": "",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://russoleegallery.com/",
+   "https://russoleegallery.com/about",
+   "https://russoleegallery.com/contact"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Adams and Ollman": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [],
+   "fri": [],
+   "sat": [],
+   "sun": []
+  },
+  "by_appointment": false,
+  "hours_note": "Hours not listed",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://adamsandollman.com/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Converge 45": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [],
+   "fri": [],
+   "sat": [],
+   "sun": []
+  },
+  "by_appointment": false,
+  "hours_note": "Hours not listed",
+  "admission": "unknown",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.converge45.org/",
+   "https://www.converge45.org/contact",
+   "https://www.converge45.org/contact",
+   "https://www.converge45.org/2026-here-to-you-now"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Oregon Jewish Museum and Center for Holocaust Education": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ],
+   "thu": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ],
+   "fri": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ],
+   "sat": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ],
+   "sun": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ]
+  },
+  "by_appointment": false,
+  "hours_note": "Closed holidays",
+  "admission": "ticketed",
+  "admission_note": "Adults: $10, Seniors: $6, Students: $5, Members: Free, Children under 12: Free",
+  "free_days": [],
+  "sources": [
+   "https://www.ojmche.org/",
+   "https://www.ojmche.org/collections/visit-research/",
+   "https://www.ojmche.org/visit/",
+   "https://www.ojmche.org/visit-ojmche/",
+   "https://www.ojmche.org/visit-ojmche/museum-shop/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Japanese American Museum of Oregon": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [
+    [
+     "10:00",
+     "16:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "16:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "16:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "16:00"
+    ]
+   ],
+   "sun": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ]
+  },
+  "by_appointment": false,
+  "hours_note": "",
+  "admission": "ticketed",
+  "admission_note": "Adults $8, Seniors $6, Students $5, Children 11 and under free",
+  "free_days": [],
+  "sources": [
+   "https://jamo.org/",
+   "https://jamo.org/visit/",
+   "https://jamo.org/tours/",
+   "https://jamo.org/planned-giving/",
+   "https://jamo.org/visit/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Portland Chinatown Museum": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [
+    [
+     "11:00",
+     "15:00"
+    ]
+   ],
+   "fri": [
+    [
+     "11:00",
+     "15:00"
+    ]
+   ],
+   "sat": [
+    [
+     "11:00",
+     "15:00"
+    ]
+   ],
+   "sun": [
+    [
+     "11:00",
+     "15:00"
+    ]
+   ]
+  },
+  "by_appointment": true,
+  "hours_note": "",
+  "admission": "ticketed",
+  "admission_note": "Adult: $8, Senior: $6, Student: $5, Child (12 Under): Free",
+  "free_days": [],
+  "sources": [
+   "https://www.portlandchinatownmuseum.org/",
+   "https://www.portlandchinatownmuseum.org/visit/",
+   "https://www.portlandchinatownmuseum.org/about/",
+   "https://www.portlandchinatownmuseum.org/about/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Portland Art Museum": {
+  "hours": {
+   "mon": [],
+   "tue": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "wed": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "10:00",
+     "17:00"
+    ]
+   ]
+  },
+  "by_appointment": false,
+  "hours_note": "* Free admission from 10am – 7pm on the first Thursday of each month.",
+  "admission": "ticketed",
+  "admission_note": "Members free, Adults $24.50, Seniors $22.50, Students free, Children 17 and under free.",
+  "free_days": [
+   {
+    "description": "Free admission on the first Thursday of each month.",
+    "rule": {
+     "type": "monthly_nth_weekday",
+     "nth": 1,
+     "weekday": "thu"
+    },
+    "start_time": "10:00",
+    "end_time": "19:00"
+   }
+  ],
+  "sources": [
+   "https://portlandartmuseum.org/",
+   "https://portlandartmuseum.org/admission/",
+   "https://portlandartmuseum.org/visitor-guide/",
+   "https://portlandartmuseum.org/blog/portland-art-museum-marks-transformative-first-year-post-expansion-with-nearly-500000-visits/",
+   "https://portlandartmuseum.org/about-the-museum/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Rental Sales Gallery (Portland Art Museum)": {
+  "hours": {
+   "mon": [],
+   "tue": [
+    [
+     "11:00",
+     "17:00"
+    ]
+   ],
+   "wed": [
+    [
+     "11:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "11:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "11:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "11:00",
+     "17:00"
+    ]
+   ],
+   "sun": []
+  },
+  "by_appointment": false,
+  "hours_note": "",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.rentalsalesgallery.com/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Jordan Schnitzer Museum of Art at PSU": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [],
+   "fri": [],
+   "sat": [],
+   "sun": []
+  },
+  "by_appointment": false,
+  "hours_note": "Hours not listed",
+  "admission": "unknown",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.pdx.edu/museum-of-art/",
+   "https://www.pdx.edu/admissions/apply",
+   "https://www.pdx.edu/visit/",
+   "https://www.pdx.edu/admissions/request-information",
+   "https://www.pdx.edu/visit/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Portland Japanese Garden": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [],
+   "fri": [],
+   "sat": [],
+   "sun": []
+  },
+  "by_appointment": false,
+  "hours_note": "Hours vary — check website",
+  "admission": "ticketed",
+  "admission_note": "$22.50 adults, additional pricing available",
+  "free_days": [],
+  "sources": [
+   "https://japanesegarden.org/",
+   "https://japanesegarden.org/hours-admission/",
+   "https://japanesegarden.org/visitor-faqs/",
+   "https://japanesegarden.org/visitvirtually/",
+   "https://japanesegarden.org/about-portland-japanese-garden/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "One Grand Gallery": {
+  "hours": {
+   "mon": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "tue": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "wed": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ]
+  },
+  "by_appointment": true,
+  "hours_note": "The gallery will close between exhibits to de-install and set up shows.",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://onegrandgallery.com/",
+   "https://onegrandgallery.com/About"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Chefas Projects": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [
+    [
+     "13:00",
+     "18:00"
+    ]
+   ],
+   "thu": [
+    [
+     "13:00",
+     "18:00"
+    ]
+   ],
+   "fri": [
+    [
+     "13:00",
+     "18:00"
+    ]
+   ],
+   "sat": [
+    [
+     "13:00",
+     "18:00"
+    ]
+   ],
+   "sun": []
+  },
+  "by_appointment": false,
+  "hours_note": "",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.stephaniechefas.com/",
+   "https://www.stephaniechefas.com/registration",
+   "https://www.stephaniechefas.com/contact"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Nationale": {
+  "hours": {
+   "mon": [
+    [
+     "12:00",
+     "18:00"
+    ]
+   ],
+   "tue": [],
+   "wed": [],
+   "thu": [
+    [
+     "12:00",
+     "18:00"
+    ]
+   ],
+   "fri": [
+    [
+     "12:00",
+     "18:00"
+    ]
+   ],
+   "sat": [
+    [
+     "12:00",
+     "18:00"
+    ]
+   ],
+   "sun": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ]
+  },
+  "by_appointment": true,
+  "hours_note": "Most Sundays · 12–5pm (please double check before visiting)",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.nationale.us/",
+   "https://www.nationale.us/info"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Annie Meyer Gallery": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [
+    [
+     "13:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "13:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "13:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "13:00",
+     "17:00"
+    ]
+   ],
+   "sun": []
+  },
+  "by_appointment": true,
+  "hours_note": "Open First Friday until 9pm",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://anniemeyergallery.com/",
+   "https://anniemeyergallery.com/about/",
+   "https://anniemeyergallery.com/contact/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Cooley Gallery (Reed College)": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ]
+  },
+  "by_appointment": true,
+  "hours_note": "",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.reed.edu/cooley/",
+   "https://www.reed.edu/cooley/about.html"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Hoffman Gallery (Lewis & Clark)": {
+  "hours": {
+   "mon": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ],
+   "tue": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ],
+   "wed": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ],
+   "thu": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ],
+   "fri": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ],
+   "sat": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ],
+   "sun": [
+    [
+     "11:00",
+     "16:00"
+    ]
+   ]
+  },
+  "by_appointment": false,
+  "hours_note": "",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.lclark.edu/hoffman_gallery/",
+   "https://www.lclark.edu/about/",
+   "https://www.lclark.edu/about/apply/",
+   "https://www.lclark.edu/visit/",
+   "https://www.lclark.edu/about/alumni/"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Alberta Street Gallery": {
+  "hours": {
+   "mon": [
+    [
+     "11:00",
+     "19:00"
+    ]
+   ],
+   "tue": [
+    [
+     "11:00",
+     "19:00"
+    ]
+   ],
+   "wed": [
+    [
+     "11:00",
+     "19:00"
+    ]
+   ],
+   "thu": [
+    [
+     "11:00",
+     "19:00"
+    ]
+   ],
+   "fri": [
+    [
+     "11:00",
+     "19:00"
+    ]
+   ],
+   "sat": [
+    [
+     "11:00",
+     "19:00"
+    ]
+   ],
+   "sun": [
+    [
+     "11:00",
+     "19:00"
+    ]
+   ]
+  },
+  "by_appointment": false,
+  "hours_note": "",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.albertastreetgallery.com/",
+   "https://www.albertastreetgallery.com/about_us.html",
+   "https://www.albertastreetgallery.com/learn-more-about-membership.html",
+   "https://www.albertastreetgallery.com/contact_us.html"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Nucleus Portland": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [
+    [
+     "12:00",
+     "18:00"
+    ]
+   ],
+   "fri": [
+    [
+     "12:00",
+     "18:00"
+    ]
+   ],
+   "sat": [
+    [
+     "12:00",
+     "18:00"
+    ]
+   ],
+   "sun": [
+    [
+     "12:00",
+     "18:00"
+    ]
+   ]
+  },
+  "by_appointment": false,
+  "hours_note": "",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.nucleusportland.com/",
+   "https://www.nucleusportland.com/pages/about-us",
+   "https://www.nucleusportland.com/pages/about-us"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Antler Gallery": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [],
+   "fri": [
+    [
+     "15:00",
+     "19:00"
+    ]
+   ],
+   "sat": [
+    [
+     "14:00",
+     "18:00"
+    ]
+   ],
+   "sun": [
+    [
+     "11:00",
+     "15:00"
+    ]
+   ]
+  },
+  "by_appointment": false,
+  "hours_note": "Open for public viewing on specified days.",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.antlerpdx.com/",
+   "https://www.antlerpdx.com/pages/about-us"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Ori Gallery": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [
+    [
+     "13:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "13:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "13:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "13:00",
+     "17:00"
+    ]
+   ]
+  },
+  "by_appointment": false,
+  "hours_note": "",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://oriartgallery.org/",
+   "https://oriartgallery.org/contact"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Oregon Contemporary": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "thu": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "fri": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "sat": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "sun": []
+  },
+  "by_appointment": true,
+  "hours_note": "",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.oregoncontemporary.org/",
+   "https://www.oregoncontemporary.org/visit",
+   "https://www.oregoncontemporary.org/info",
+   "https://www.oregoncontemporary.org/about-us",
+   "https://www.oregoncontemporary.org/visit"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "Carnation Contemporary": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [],
+   "fri": [],
+   "sat": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ],
+   "sun": [
+    [
+     "12:00",
+     "17:00"
+    ]
+   ]
+  },
+  "by_appointment": false,
+  "hours_note": "",
+  "admission": "free",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://carnationcontemporary.com/",
+   "https://carnationcontemporary.com/Information"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "PICA (Portland Institute for Contemporary Art)": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [],
+   "fri": [],
+   "sat": [],
+   "sun": []
+  },
+  "by_appointment": false,
+  "hours_note": "Hours not listed",
+  "admission": "unknown",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.pica.org/",
+   "https://www.pica.org/about",
+   "https://www.pica.org/support/members",
+   "https://www.pica.org/about/press",
+   "https://www.pica.org/about/jobs"
+  ],
+  "checked_at": "2026-11-22"
+ },
+ "The Lantern": {
+  "hours": {
+   "mon": [],
+   "tue": [],
+   "wed": [],
+   "thu": [],
+   "fri": [],
+   "sat": [],
+   "sun": []
+  },
+  "by_appointment": false,
+  "hours_note": "Hours not listed",
+  "admission": "unknown",
+  "admission_note": "",
+  "free_days": [],
+  "sources": [
+   "https://www.thelanternpdx.org/",
+   "https://www.thelanternpdx.org/about",
+   "https://www.thelanternpdx.org/contact"
+  ],
+  "checked_at": "2026-11-22"
+ }
+}

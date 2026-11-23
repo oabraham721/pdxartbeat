@@ -1,0 +1,89 @@
+name: Update events and deploy site
+
+on:
+  schedule:
+    - cron: '0 13 * * *'  # Daily, 5 AM PST / 6 AM PDT (13:00 UTC)
+  workflow_dispatch:
+    inputs:
+      refresh_venue_details:
+        description: 'Also re-extract venue hours / admission / free days'
+        type: boolean
+        default: false
+      skip_scrape:
+        description: 'Only rebuild and deploy the site from committed data'
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: ['site/**', 'build_site.py']
+
+permissions:
+  contents: write   # commit refreshed data (events.json, archive.json, ...)
+  pages: write
+  id-token: write
+
+concurrency:
+  group: update-and-deploy
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Day of month (Portland)
+        id: day
+        run: echo "dom=$(TZ=America/Los_Angeles date +%d)" >> "$GITHUB_OUTPUT"
+
+      - name: Refresh venue details (1st of the month, or on request)
+        if: inputs.refresh_venue_details || (github.event_name == 'schedule' && steps.day.outputs.dom == '01')
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python venue_details.py
+
+      - name: Scrape events
+        if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && !inputs.skip_scrape)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python main.py
+
+      - name: Build site
+        run: python build_site.py
+
+      - name: Commit refreshed data
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "pdx-artbeat-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add events.json archive.json venue_details.json venue_coords.json
+          if git diff --cached --quiet; then
+            echo "No data changes"
+          else
+            git commit -m "Update events $(TZ=America/Los_Angeles date +%Y-%m-%d)"
+            git push
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

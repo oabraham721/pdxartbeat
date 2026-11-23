@@ -1,0 +1,42 @@
+name,type,neighborhood,address,website,events_url,feed,status,notes
+Blackfish Gallery,gallery,Pearl,938 NW Everett St,https://www.blackfish.com,https://www.blackfish.com/exhibition-groups/current-exhibition-may-2025,,active,PADA member; Wix site; nav link redirects to the current month's page
+Gallery 114,gallery,Pearl,1100 NW Glisan St,https://www.gallery114.com,https://www.gallery114.com/current-exhibition,,active,PADA member; Squarespace
+Laura Vincent Design & Gallery,gallery,Pearl,824 NW Davis St,https://lvdesignandgallery.com,https://lvdesignandgallery.com/exhibitions/,,active,PADA member; Artlogic CMS
+Waterstone Gallery,gallery,Pearl,124 NW 9th Ave,https://waterstonegallery.com,https://waterstonegallery.com/exhibitions | https://waterstonegallery.com/gallery-events,,active,PADA member
+Elizabeth Leach Gallery,gallery,Pearl,417 NW 9th Ave,https://www.elizabethleach.com,https://www.elizabethleach.com/exhibitions/,,active,Artlogic CMS
+Froelick Gallery,gallery,Pearl,714 NW Davis St,https://froelickgallery.com,https://froelickgallery.com/exhibitions/,,active,Artlogic CMS
+Augen Gallery,gallery,Pearl,716 NW Davis St,https://www.augengallery.com,https://www.augengallery.com/exhibitions/,,active,
+Curb Gallery,gallery,Pearl,424 NW 12th Ave,https://www.instagram.com/curb_gallery,,,active,Instagram only
+Blue Sky Gallery,nonprofit,Pearl,122 NW 8th Ave,https://www.blueskygallery.org,https://www.blueskygallery.org/currently-showing,,active,Photography; Squarespace
+The Black Gallery,gallery,Pearl,916 NW Flanders St,https://theblackgallerypdx.com,,,active,Run by Don't Shoot Portland
+Center for Contemporary Art & Culture (PNCA),university,Pearl,511 NW Broadway,https://pnca.willamette.edu,https://www.eventbrite.com/cc/pnca-2026-fall-events-4855984/,,active,PNCA events are listed on Eventbrite
+PDX Contemporary Art,gallery,Northwest,1881 NW Vaughn St,https://pdxcontemporaryart.com,https://pdxcontemporaryart.com/exhibitions,ics,active,PADA member; has iCal link
+Russo Lee Gallery,gallery,Northwest,805 NW 21st Ave,https://russoleegallery.com,https://russoleegallery.com/exhibitions,,active,PADA member
+Adams and Ollman,gallery,Northwest,1806 NW Marshall St,https://adamsandollman.com,https://adamsandollman.com/Current-Exhibitions | https://adamsandollman.com/Upcoming-Exhibitions,,active,JS-rendered site
+Converge 45,nonprofit,Northwest,1801 NW Upshur St,https://www.converge45.org,https://www.converge45.org/events,,active,Shows at various venues; Squarespace
+Oregon Jewish Museum and Center for Holocaust Education,museum,Old Town,724 NW Davis St,https://www.ojmche.org,https://www.ojmche.org/exhibit-type/exhibitions/ | https://www.ojmche.org/exhibit-type/upcoming-exhibitions/ | https://www.ojmche.org/calendar/,,active,
+Japanese American Museum of Oregon,museum,Old Town,411 NW Flanders St,https://jamo.org,https://jamo.org/current-exhibitions/ | https://jamo.org/events/,,active,iCal link returns HTML; uses AI
+Portland Chinatown Museum,museum,Old Town,127 NW 3rd Ave,https://www.portlandchinatownmuseum.org,https://www.portlandchinatownmuseum.org/exhibitions/,,active,
+Portland Art Museum,museum,Downtown,1219 SW Park Ave,https://portlandartmuseum.org,https://portlandartmuseum.org/exhibitions,,active,
+Rental Sales Gallery (Portland Art Museum),gallery,Downtown,1237 SW 10th Ave,https://www.rentalsalesgallery.com,https://www.rentalsalesgallery.com/events,,active,
+Jordan Schnitzer Museum of Art at PSU,museum,Downtown,,https://www.pdx.edu/museum-of-art/,,,active,Galleries across the PSU campus
+Portland Japanese Garden,museum,Washington Park,611 SW Kingston Ave,https://japanesegarden.org,https://japanesegarden.org/art-exhibitions/ | https://japanesegarden.org/pjg-events/,,active,
+One Grand Gallery,gallery,Central Eastside,1000 E Burnside St,https://onegrandgallery.com,https://onegrandgallery.com/Exhibitions,,active,PADA member
+Chefas Projects,gallery,Central Eastside,"134 SE Taylor St, Suite 203",https://www.stephaniechefas.com,https://www.stephaniechefas.com/2026-exhibits,,active,Formerly Stephanie Chefas Projects
+Nationale,gallery,Southeast,15 SE 22nd Ave,https://www.nationale.us,https://www.nationale.us/two-shows,,active,Squarespace; current-show URL changes
+Annie Meyer Gallery,gallery,Southeast,2507 SE Clinton St,https://anniemeyergallery.com,https://anniemeyergallery.com/ | https://anniemeyerartwork.com/blog/,,active,"WordPress; no exhibitions page, events posted to News blog; First Friday 6-9pm"
+Cooley Gallery (Reed College),university,Southeast,3203 SE Woodstock Blvd,https://www.reed.edu/cooley/,https://www.reed.edu/cooley/exhibitions/index.html,,active,
+Hoffman Gallery (Lewis & Clark),university,Southwest,615 S Palatine Hill Rd,https://www.lclark.edu/hoffman_gallery/,,,active,LiveWhale CMS (usually has iCal/JSON feeds)
+Alberta Street Gallery,gallery,Alberta,1829 NE Alberta St,https://www.albertastreetgallery.com,https://www.albertastreetgallery.com/events.html,,active,Artist collective
+Nucleus Portland,gallery,Alberta,"2916 NE Alberta St, Suite A & B",https://www.nucleusportland.com,https://nucleusportland.com/blogs/future-exhibitions,,active,Shopify blog
+Antler Gallery,gallery,Alberta,2714 NE Alberta St,https://www.antlerpdx.com,https://www.antlerpdx.com | https://www.antlerpdx.com/pages/schedule,,active,Includes sister space Talon Gallery; openings Last Thursday 6-9pm; open Fri-Sun
+Ori Gallery,nonprofit,North,4038 N Mississippi Ave,https://oriartgallery.org,https://oriartgallery.org/the-gallery,,active,Squarespace
+Oregon Contemporary,nonprofit,North,8371 N Interstate Ave,https://www.oregoncontemporary.org,https://www.oregoncontemporary.org/on-view-and-upcoming | https://www.oregoncontemporary.org/,,active,Formerly Disjecta; Squarespace
+Carnation Contemporary,gallery,North,8371 N Interstate Ave,https://carnationcontemporary.com,https://carnationcontemporary.com/Exhibitions,,active,Shares building with Oregon Contemporary
+PICA (Portland Institute for Contemporary Art),nonprofit,Eliot,721-723 N Tillamook St,https://www.pica.org,https://www.pica.org/events,,relocating,Moved Oct 2026; reopens with events Jan-Feb 2027 and exhibition Apr 2027
+The Lantern,community_venue,Southeast,2828 SE Stephens St,https://www.thelanternpdx.org,,,occasional,Grief-support community space; occasional art events
+Holding Contemporary,gallery,,,https://www.holdingcontemporary.com,,ics,likely_inactive,Site's current show is stale
+Melanie Flood Projects,gallery,Downtown,420 SW Washington St,https://www.melaniefloodprojects.com,,,likely_inactive,Site stale since ~2022; Melanie Flood now curating elsewhere
+Ampersand Gallery & Fine Books,gallery,,,https://www.ampersandgallerypdx.com,,,closed,Moved to Hood River
+Upfor,gallery,Pearl,929 NW Flanders St,,,,closed,Closed 2020
+Lumber Room,gallery,,,,,,closed,Closed Feb 2026
