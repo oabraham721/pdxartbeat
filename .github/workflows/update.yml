@@ -15,7 +15,7 @@ on:
         default: false
   push:
     branches: [main]
-    paths: ['site/**', 'build_site.py']
+    paths: ['site/**', 'build_site.py', '.github/workflows/update.yml']
 
 permissions:
   contents: write   # commit refreshed data (events.json, archive.json, ...)
@@ -58,6 +58,11 @@ jobs:
 
       - name: Build site
         run: python build_site.py
+
+      # Pages serves files with max-age=600, so browsers can pair a fresh index.html with a stale data.js/aoty.js.
+      # Versioning the script URLs per run makes the page always load the files from the same deploy.
+      - name: Cache-bust script URLs
+        run: sed -i -E 's/src="(data|aoty)\.js"/src="\1.js?v=${{ github.run_id }}"/g' site/index.html && grep -o 'src="[a-z]*\.js?v=[0-9]*"' site/index.html
 
       - name: Commit refreshed data
         if: github.event_name != 'push'
