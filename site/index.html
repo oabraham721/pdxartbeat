@@ -186,6 +186,53 @@
   .when2.now { color: #157a52; }
   .when2.soon { color: var(--accent); }
 
+  /* artists tabs + AOTY */
+  .tabs { display: flex; gap: 6px; padding-top: 28px; border-bottom: 1px solid var(--line); }
+  .tabs a { padding: 10px 16px; font-weight: 600; font-size: 15px; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; display: flex; align-items: baseline; gap: 8px; }
+  .tabs a[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  .tabs a:hover { color: var(--ink); }
+  .tab-sub { font-weight: 400; font-size: 12px; color: var(--muted); }
+  .aoty-banner { display: grid; grid-template-columns: 84px 1fr auto; gap: 18px; align-items: center; margin: 0 0 30px; padding: 14px 18px 14px 14px; border-radius: 16px; background: linear-gradient(110deg, #13233f, #1f3f73 55%, #2e5fae); color: #fff; }
+  .aoty-banner .av { width: 84px; height: 84px; border-radius: 12px; background: center/cover no-repeat; }
+  .aoty-banner small { display: block; font: 600 11px Inter, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; color: #9fd8ff; }
+  .aoty-banner b { display: block; font: 600 26px Fraunces, serif; line-height: 1.1; margin: 2px 0; }
+  .aoty-banner span.t { font-size: 13px; color: #d6e4ff; }
+  .aoty-banner .go { font-weight: 600; font-size: 14px; white-space: nowrap; }
+
+  .aoty-hero { display: grid; grid-template-columns: minmax(260px, 420px) 1fr; gap: 48px; align-items: center; padding: 34px 0 44px; }
+  .aoty-portrait { width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 18px; box-shadow: 0 20px 50px rgba(19,35,63,.25); }
+  .eyebrow { display: inline-flex; gap: 8px; align-items: center; font: 600 12px Inter, sans-serif; letter-spacing: 1.4px; text-transform: uppercase; color: #1f5fbf; background: #e4efff; padding: 6px 12px; border-radius: 999px; }
+  .aoty-hero h1 { font-family: Fraunces, serif; font-size: 72px; line-height: .98; letter-spacing: -2px; margin: 16px 0 10px; }
+  .aoty-hero h1 em { color: #1f5fbf; }
+  .aoty-tag { font-size: 16px; color: var(--muted); margin-bottom: 18px; }
+  .disc { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+  .disc span { border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 5px 12px; font-size: 13px; }
+  .aoty-links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pull { font: italic 600 30px/1.25 Fraunces, serif; letter-spacing: -.4px; color: #13233f; border-left: 4px solid #1f5fbf; padding: 4px 0 4px 24px; margin: 0 0 40px; max-width: 900px; }
+  .aoty-body { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; margin-bottom: 56px; }
+  .aoty-body p { font-size: 16.5px; line-height: 1.7; color: #2c2a27; margin: 0 0 18px; }
+  .aoty-body p:first-child::first-letter { font: 600 58px/0.9 Fraunces, serif; float: left; margin: 6px 10px 0 0; color: #1f5fbf; }
+  .aoty-side { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; height: fit-content; }
+  .aoty-side h3 { font: 600 12px Inter, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+  .aoty-side .disc { margin-bottom: 22px; }
+  .aoty-side .disc:last-child { margin-bottom: 0; }
+  .works { columns: 3 280px; column-gap: 20px; }
+  .work { break-inside: avoid; margin: 0 0 20px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; cursor: zoom-in; display: block; width: 100%; padding: 0; text-align: left; font: inherit; color: inherit; }
+  .work img { width: 100%; display: block; }
+  .work .wc { padding: 14px 16px 16px; }
+  .work .wc b { display: block; font: 600 19px Fraunces, serif; margin-bottom: 4px; }
+  .work .wc p { margin: 0; font-size: 13.5px; line-height: 1.5; color: #4a4640; }
+  .lightbox { position: fixed; inset: 0; background: rgba(10,12,18,.92); z-index: 3000; display: grid; grid-template-columns: 60px 1fr 60px; align-items: center; padding: 30px; }
+  .lightbox[hidden] { display: none; }
+  .lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; max-height: 100%; }
+  .lightbox img { max-width: 100%; max-height: 78vh; object-fit: contain; border-radius: 6px; }
+  .lightbox figcaption { color: #e9e6e1; max-width: 720px; text-align: center; font-size: 14px; line-height: 1.5; }
+  .lightbox figcaption b { display: block; font: 600 22px Fraunces, serif; color: #fff; margin-bottom: 4px; }
+  .lb-close, .lb-nav { background: none; border: 0; color: #fff; cursor: pointer; font-size: 30px; }
+  .lb-close { position: absolute; top: 14px; right: 20px; font-size: 24px; }
+  .lb-nav { font-size: 54px; line-height: 1; opacity: .8; }
+  .lb-nav:hover { opacity: 1; }
+
   /* map page */
   .mapwrap { display: grid; grid-template-columns: 360px 1fr; height: calc(100vh - 68px); }
   .side { overflow-y: auto; border-right: 1px solid var(--line); padding: 20px; }
@@ -212,6 +259,16 @@
     header.open .search { display: block; order: 4; width: 100%; }
     header.open .search input { width: 100%; }
     .suggest { width: 100%; }
+    .aoty-hero { grid-template-columns: 1fr; gap: 24px; padding-top: 22px; }
+    .aoty-hero h1 { font-size: 46px; }
+    .aoty-portrait { max-height: 70vh; }
+    .pull { font-size: 22px; padding-left: 16px; }
+    .aoty-body { grid-template-columns: 1fr; gap: 24px; }
+    .aoty-banner { grid-template-columns: 64px 1fr; }
+    .aoty-banner .av { width: 64px; height: 64px; }
+    .aoty-banner .go { display: none; }
+    .lightbox { grid-template-columns: 36px 1fr 36px; padding: 12px; }
+    .tab-sub { display: none; }
     .ehead { grid-template-columns: 1fr; gap: 20px; }
     .ehead h1 { font-size: 32px; }
     .burger { margin-left: auto; font-size: 22px; }
@@ -353,15 +410,31 @@
 <!-- ARTISTS INDEX -->
 <div class="page" id="p-artists">
   <div class="wrap">
-    <div class="hero">
-      <h1>The <em>artists</em> showing in Portland.</h1>
-      <div class="stats" id="as-stats"></div>
+    <div class="tabs" role="tablist" aria-label="Artists">
+      <a role="tab" id="tab-all" href="#artists" aria-controls="as-all">All artists</a>
+      <a role="tab" id="tab-aoty" href="#artists/aoty" aria-controls="as-aoty">★ AOTY <span class="tab-sub">Artist of the Year</span></a>
     </div>
-    <div class="filters" id="as-filters"></div>
-    <div class="letters" id="as-letters"></div>
-    <div id="as-groups"></div>
+    <div id="as-all" role="tabpanel" aria-labelledby="tab-all">
+      <div class="hero">
+        <h1>The <em>artists</em> showing in Portland.</h1>
+        <div class="stats" id="as-stats"></div>
+      </div>
+      <a class="aoty-banner" id="aoty-banner" href="#artists/aoty"></a>
+      <div class="filters" id="as-filters"></div>
+      <div class="letters" id="as-letters"></div>
+      <div id="as-groups"></div>
+    </div>
+    <div id="as-aoty" role="tabpanel" aria-labelledby="tab-aoty" hidden></div>
   </div>
   <footer><div class="wrap">Collected daily from Portland galleries, museums and art spaces. Always confirm details with the venue before you go. · <a href="https://github.com/oabraham721/pdxartbeat/issues/new" target="_blank" rel="noopener">Report a problem or suggest a venue</a></div></footer>
+</div>
+
+<!-- Lightbox for AOTY artwork -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork" hidden>
+  <button type="button" class="lb-close" id="lb-close" aria-label="Close">✕</button>
+  <button type="button" class="lb-nav lb-prev" id="lb-prev" aria-label="Previous artwork">‹</button>
+  <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <button type="button" class="lb-nav lb-next" id="lb-next" aria-label="Next artwork">›</button>
 </div>
 
 <!-- SEARCH -->
@@ -387,6 +460,7 @@
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="data.js"></script>
+<script src="aoty.js"></script>
 <script>
 const { events, venues, coords, generated_at } = window.ART_DATA;
 const PAST = window.ART_DATA.past_events || [];
@@ -515,6 +589,8 @@ const ALL_EVENTS = events.concat(PAST);
 const niceName = n => n === n.toUpperCase() && /[A-Z]/.test(n) ? n.toLowerCase().replace(/(^|[\s\-'])(\p{L})/gu, (m, p, c) => p + c.toUpperCase()) : n;
 const artistIndex = {};
 ALL_EVENTS.forEach(e => (e.artists || []).forEach(a => (artistIndex[slug(a)] ||= { name: niceName(a.trim()), events: [] }).events.push(e)));
+// The featured artist is always listed (and searchable), even without scraped Portland shows; their page is the AOTY tab.
+if (window.AOTY) (artistIndex[slug(window.AOTY.name)] ||= { name: window.AOTY.name, events: [] }).featured = true;
 const artistLinks = e => (e.artists || []).map(a => `<a href="#artist/${slug(a)}">${esc(niceName(a))}</a>`).join(", ");
 
 function card(e, closing) {
@@ -714,7 +790,7 @@ function route() {
   if (target === "onview") renderOnView(arg === "closing" ? "closing" : undefined);
   if (target === "venue") renderVenue(arg);
   if (target === "venues") renderVenues();
-  if (target === "artists") renderArtists();
+  if (target === "artists") showArtistsTab(arg === "aoty" && window.AOTY ? "aoty" : "all");
   if (target === "event") renderEvent(arg);
   if (target === "artist") renderArtist(arg);
   if (target === "search") renderSearch(decodeURIComponent(arg || ""));
@@ -790,6 +866,7 @@ function renderEvent(id) {
 }
 
 function renderArtist(s) {
+  if (artistIndex[s]?.featured) { location.replace("#artists/aoty"); return; }
   const a = artistIndex[s];
   if (!a) {
     document.getElementById("a-name").textContent = document.getElementById("a-crumb").textContent = "Artist not found";
@@ -817,15 +894,17 @@ function artistSummary(a) {
   const now = cur.find(onViewNow);
   const next = cur.filter(e => e.start_date && e.start_date > TODAY).sort((x, y) => x.start_date.localeCompare(y.start_date))[0];
   const venuesShown = [...new Set(a.events.map(e => e.venue))];
-  const img = a.events.find(e => e.image_url)?.image_url;
+  const img = a.events.find(e => e.image_url)?.image_url || (a.featured ? window.AOTY.portrait.src : undefined);
   let when = null;
-  if (now) when = { cls: "now", text: `On view${now.end_date ? " through " + shortDate(now.end_date) : " now"}` };
+  if (a.featured) when = { cls: "now", text: `★ Artist of the Year ${window.AOTY.year}` };
+  else if (now) when = { cls: "now", text: `On view${now.end_date ? " through " + shortDate(now.end_date) : " now"}` };
   else if (next) when = { cls: "soon", text: `${isExhibition(next) ? "Opens" : "Next"} ${shortDate(next.start_date)}` };
   else if (cur.length) when = { cls: "", text: `${cur.length} listing${cur.length > 1 ? "s" : ""}` };
   return { now: !!now, upcoming: !now && !!next, current: cur.length > 0, venuesShown, img, when };
 }
 
 function renderArtists() {
+  renderAotyBanner();
   const list = Object.entries(artistIndex).map(([s, a]) => ({ s, a, sum: artistSummary(a) }))
     .sort((x, y) => sortKey(x.a.name).localeCompare(sortKey(y.a.name)));
   const filtered = list.filter(x => artistFilter === "all" || (artistFilter === "now" ? x.sum.now : artistFilter === "upcoming" ? x.sum.upcoming : true));
@@ -855,7 +934,7 @@ function renderArtists() {
       <a class="acard" href="#artist/${s}">
         <div class="av" style="${sum.img ? `background-image:url(${cssUrl(sum.img)})` : ""}">${sum.img ? "" : esc(a.name[0])}</div>
         <div><b>${esc(a.name)}</b>
-          <div class="where">${esc(sum.venuesShown.slice(0, 2).join(", "))}${sum.venuesShown.length > 2 ? ` +${sum.venuesShown.length - 2}` : ""}</div>
+          <div class="where">${sum.venuesShown.length ? esc(sum.venuesShown.slice(0, 2).join(", ")) + (sum.venuesShown.length > 2 ? ` +${sum.venuesShown.length - 2}` : "") : a.featured ? esc(window.AOTY.disciplines.join(" · ")) : ""}</div>
           ${sum.when ? `<div class="when2 ${sum.when.cls}">${esc(sum.when.text)}</div>` : ""}
         </div></a>`).join("")}</div></div>`).join("")
     || `<p style="color:var(--muted)">No artists match this filter.</p>`;
@@ -877,6 +956,93 @@ function searchMatches(q) {
     pastEvs: PAST.filter(e => hit(`${e.title} ${(e.artists || []).join(" ")} ${e.venue}`)),
   };
 }
+
+/* ---------- AOTY (Artist of the Year) ---------- */
+function showArtistsTab(which) {
+  const aoty = which === "aoty";
+  document.getElementById("tab-aoty").style.display = window.AOTY ? "" : "none";
+  document.getElementById("tab-all").setAttribute("aria-selected", String(!aoty));
+  document.getElementById("tab-aoty").setAttribute("aria-selected", String(aoty));
+  document.getElementById("as-all").hidden = aoty;
+  document.getElementById("as-aoty").hidden = !aoty;
+  if (aoty) renderAoty(); else renderArtists();
+}
+
+function renderAotyBanner() {
+  const A = window.AOTY, el = document.getElementById("aoty-banner");
+  if (!A) { el.style.display = "none"; return; }
+  el.innerHTML = `<span class="av" style="background-image:url(${cssUrl(A.portrait.src)})" role="img" aria-label="${esc(A.portrait.alt)}"></span>
+    <span><small>★ Artist of the Year ${esc(A.year)}</small><b>${esc(A.name)}</b><span class="t">${esc(A.tagline)}</span></span>
+    <span class="go">Meet the artist →</span>`;
+}
+
+function renderAoty() {
+  const A = window.AOTY;
+  const [first, ...rest] = A.name.split(" ");
+  // If the featured artist also appears in scraped Portland events, list those shows.
+  const shows = artistIndex[slug(A.name)]?.events.filter(e => events.includes(e)) || [];
+  document.getElementById("as-aoty").innerHTML = `
+    <section class="aoty-hero">
+      <img class="aoty-portrait" src="${esc(A.portrait.src)}" alt="${esc(A.portrait.alt)}">
+      <div>
+        <span class="eyebrow">★ Artist of the Year · ${esc(A.year)}</span>
+        <h1>${esc(first)} <em>${esc(rest.join(" "))}</em></h1>
+        <div class="aoty-tag">${esc(A.tagline)}</div>
+        <div class="disc">${A.disciplines.map(d => `<span>${esc(d)}</span>`).join("")}</div>
+        <div class="aoty-links">${A.links.map((l, i) => `<a class="btn sm${i ? " ghost" : ""}" href="${esc(l.href)}" ${l.href.startsWith("mailto:") ? "" : 'target="_blank" rel="noopener"'}>${esc(l.label)}${l.href.startsWith("mailto:") ? "" : " ↗"}</a>`).join("")}</div>
+      </div>
+    </section>
+    <blockquote class="pull">“${esc(A.pullQuote)}”</blockquote>
+    <section class="aoty-body">
+      <div>${A.bio.map(p => `<p>${esc(p)}</p>`).join("")}</div>
+      <aside class="aoty-side">
+        <h3>Materials</h3><div class="disc">${A.materials.map(m => `<span>${esc(m)}</span>`).join("")}</div>
+        <h3>Recurring motifs</h3><div class="disc">${A.motifs.map(m => `<span>${esc(m)}</span>`).join("")}</div>
+      </aside>
+    </section>
+    <section>
+      <div class="sec-head"><h2>Selected works</h2><span style="font-size:13px;color:var(--muted)">Tap a piece to view it larger</span></div>
+      <div class="works">${A.works.map((w, i) => `
+        <button type="button" class="work" data-work="${i}" aria-label="View ${esc(w.title || "artwork")} larger">
+          <img src="${esc(w.src)}" alt="${esc(w.title ? w.title + ": " : "")}${esc(w.description)}" loading="lazy">
+          <div class="wc">${w.title ? `<b>${esc(w.title)}</b>` : ""}<p>${esc(w.description)}</p></div>
+        </button>`).join("")}</div>
+    </section>
+    <section>
+      <div class="sec-head"><h2>Portland shows</h2></div>
+      ${shows.length ? `<div class="grid">${shows.map(e => card(e)).join("")}</div>`
+        : `<p style="color:var(--muted)">No Portland shows listed right now. Follow <a href="${esc(A.links[0].href)}" target="_blank" rel="noopener" style="text-decoration:underline">${esc(A.name)} on ${esc(A.links[0].label)}</a> for upcoming exhibitions and pop-ups.</p>`}
+    </section>`;
+}
+
+let lbIndex = 0, lbReturnFocus = null;
+function openLightbox(i) {
+  const works = window.AOTY.works;
+  lbIndex = (i + works.length) % works.length;
+  const w = works[lbIndex];
+  document.getElementById("lb-img").src = w.src;
+  document.getElementById("lb-img").alt = (w.title ? w.title + ": " : "") + w.description;
+  document.getElementById("lb-cap").innerHTML = `${w.title ? `<b>${esc(w.title)}</b>` : ""}${esc(w.description)}`;
+  const lb = document.getElementById("lightbox");
+  if (lb.hidden) { lbReturnFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = "hidden"; }
+  document.getElementById("lb-close").focus();
+}
+function closeLightbox() {
+  document.getElementById("lightbox").hidden = true;
+  document.body.style.overflow = "";
+  lbReturnFocus?.focus();
+}
+document.getElementById("as-aoty").addEventListener("click", ev => { const w = ev.target.closest("[data-work]"); if (w) openLightbox(+w.dataset.work); });
+document.getElementById("lb-close").addEventListener("click", closeLightbox);
+document.getElementById("lb-prev").addEventListener("click", () => openLightbox(lbIndex - 1));
+document.getElementById("lb-next").addEventListener("click", () => openLightbox(lbIndex + 1));
+document.getElementById("lightbox").addEventListener("click", ev => { if (ev.target.id === "lightbox") closeLightbox(); });
+document.addEventListener("keydown", ev => {
+  if (document.getElementById("lightbox").hidden) return;
+  if (ev.key === "Escape") closeLightbox();
+  if (ev.key === "ArrowLeft") openLightbox(lbIndex - 1);
+  if (ev.key === "ArrowRight") openLightbox(lbIndex + 1);
+});
 
 function renderSearch(q) {
   document.getElementById("q").value = q;
@@ -912,7 +1078,7 @@ function openSuggest(q) {
   const { artists, vs, evs, pastEvs } = searchMatches(q);
   const thumb = url => url ? `<span class="sg-thumb" style="background-image:url(${cssUrl(url)})"></span>` : `<span class="sg-thumb"></span>`;
   const groups = [
-    ["Artists", artists.slice(0, 3).map(([s, a]) => ({ href: `#artist/${s}`, img: a.events.find(e => e.image_url)?.image_url, title: a.name, sub: [...new Set(a.events.map(e => e.venue))].slice(0, 2).join(", ") }))],
+    ["Artists", artists.slice(0, 3).map(([s, a]) => ({ href: a.featured ? "#artists/aoty" : `#artist/${s}`, img: a.events.find(e => e.image_url)?.image_url || (a.featured ? window.AOTY.portrait.src : undefined), title: a.name, sub: a.featured ? `★ Artist of the Year ${window.AOTY.year}` : [...new Set(a.events.map(e => e.venue))].slice(0, 2).join(", ") }))],
     ["Venues", vs.slice(0, 3).map(v => ({ href: `#venue/${slug(v.name)}`, img: events.find(e => e.venue === v.name && e.image_url)?.image_url, title: v.name, sub: [v.neighborhood, openStatus(v.name)?.text].filter(Boolean).join(" · ") }))],
     ["Shows and events", evs.slice(0, 4).map(e => ({ href: `#event/${e.id}`, img: e.image_url, title: e.title, sub: `${e.venue} · ${whenText(e)}` }))],
   ].filter(([, items]) => items.length);
