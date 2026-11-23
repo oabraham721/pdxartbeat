@@ -186,6 +186,16 @@
   .when2.now { color: #157a52; }
   .when2.soon { color: var(--accent); }
 
+  /* personal note on the home page */
+  .note { position: relative; margin-top: 20px; padding: 20px 52px 20px 22px; border-radius: 16px; background: linear-gradient(120deg, #eaf7ef, #f3fbf6 60%, #fff); border: 1px solid #bfe5d2; max-width: 720px; }
+  .note[hidden] { display: none; }
+  .note-title { font: 600 24px Fraunces, serif; letter-spacing: -.3px; margin-bottom: 6px; }
+  .note p { margin: 0 0 12px; font-size: 15.5px; line-height: 1.6; color: #2c2a27; }
+  .note-link { display: inline-block; font-weight: 600; font-size: 14.5px; color: #157a52; border-bottom: 1px solid #9fd6bb; padding-bottom: 1px; }
+  .note-link:hover { color: #0f5c3d; border-bottom-color: currentColor; }
+  .note-close { position: absolute; top: 10px; right: 10px; border: 0; background: none; color: #6f6a63; font-size: 16px; padding: 8px 10px; cursor: pointer; border-radius: 8px; }
+  .note-close:hover { background: rgba(0,0,0,.05); color: var(--ink); }
+
   /* artists tabs + AOTY */
   .tabs { display: flex; gap: 6px; padding-top: 28px; border-bottom: 1px solid var(--line); }
   .tabs a { padding: 10px 16px; font-weight: 600; font-size: 15px; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; display: flex; align-items: baseline; gap: 8px; }
@@ -331,6 +341,12 @@
     <div class="hero">
       <h1>What's on in <em>Portland art</em> this week.</h1>
       <div class="stats" id="stats"></div>
+      <div class="note" id="note" role="note" hidden>
+        <button type="button" class="note-close" id="note-close" aria-label="Dismiss message">✕</button>
+        <div class="note-title">Made this for you <span aria-hidden="true">💚</span></div>
+        <p>You're always finding the art in everything, so I made you a way to find all of Portland's. Check this site daily to see every opening, exhibition and artist talk in the city.</p>
+        <a class="note-link" href="#artists/aoty">★ Don't miss the AOTY tab, it's my favorite →</a>
+      </div>
       <div id="freebanner"></div>
     </div>
     <div class="filters" id="filters">
@@ -1198,6 +1214,16 @@ function renderVenues() {
 
 document.getElementById("updated").textContent = "Updated " + new Date(generated_at).toLocaleString("en-US", { timeZone: "America/Los_Angeles", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
 buildFilters(); renderHome();
+// Personal note: hidden for good on this device once dismissed.
+(() => {
+  const KEY = "pdxartbeat-note-dismissed";
+  const note = document.getElementById("note");
+  try { note.hidden = localStorage.getItem(KEY) === "1"; } catch { note.hidden = false; }
+  document.getElementById("note-close").addEventListener("click", () => {
+    note.hidden = true;
+    try { localStorage.setItem(KEY, "1"); } catch {}
+  });
+})();
 window.addEventListener("hashchange", route); route();
 </script>
 </body>
