@@ -216,12 +216,22 @@
   .aoty-side h3 { font: 600 12px Inter, sans-serif; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
   .aoty-side .disc { margin-bottom: 22px; }
   .aoty-side .disc:last-child { margin-bottom: 0; }
-  .works { columns: 3 280px; column-gap: 20px; }
-  .work { break-inside: avoid; margin: 0 0 20px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; cursor: zoom-in; display: block; width: 100%; padding: 0; text-align: left; font: inherit; color: inherit; }
-  .work img { width: 100%; display: block; }
-  .work .wc { padding: 14px 16px 16px; }
-  .work .wc b { display: block; font: 600 19px Fraunces, serif; margin-bottom: 4px; }
-  .work .wc p { margin: 0; font-size: 13.5px; line-height: 1.5; color: #4a4640; }
+  .works { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; align-items: start; }
+  .work { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .work-img { display: block; width: 100%; padding: 0; border: 0; background: #eee; cursor: zoom-in; aspect-ratio: 3/4; overflow: hidden; }
+  .work img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .work .wc { padding: 12px 16px 15px; }
+  .wt { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .wt b { font: 600 18px Fraunces, serif; }
+  .wm { font-size: 13px; font-weight: 600; color: #4a4640; margin: 3px 0 2px; }
+  .work .wc p { margin: 0; font-size: 13px; line-height: 1.45; color: var(--muted); }
+  .sold { flex: none; font: 600 10.5px Inter, sans-serif; letter-spacing: .6px; text-transform: uppercase; color: #b3261e; background: #fde6e0; border-radius: 5px; padding: 3px 7px; }
+  .avail { flex: none; font-size: 12.5px; font-weight: 600; color: #1f5fbf; white-space: nowrap; }
+  .lightbox .wt { justify-content: center; }
+  .lightbox .wt b { font-size: 22px; color: #fff; }
+  .lightbox .wm { color: #e9e6e1; }
+  .lightbox .wc p, .lightbox figcaption p { color: #bdb8b0; margin: 2px 0 0; }
+  .lightbox .avail { color: #9fd8ff; }
   .lightbox { position: fixed; inset: 0; background: rgba(10,12,18,.92); z-index: 3000; display: grid; grid-template-columns: 60px 1fr 60px; align-items: center; padding: 30px; }
   .lightbox[hidden] { display: none; }
   .lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; max-height: 100%; }
@@ -997,16 +1007,15 @@ function renderAoty() {
       <div>${A.bio.map(p => `<p>${esc(p)}</p>`).join("")}</div>
       <aside class="aoty-side">
         <h3>Materials</h3><div class="disc">${A.materials.map(m => `<span>${esc(m)}</span>`).join("")}</div>
-        <h3>Recurring motifs</h3><div class="disc">${A.motifs.map(m => `<span>${esc(m)}</span>`).join("")}</div>
       </aside>
     </section>
     <section>
-      <div class="sec-head"><h2>Selected works</h2><span style="font-size:13px;color:var(--muted)">Tap a piece to view it larger</span></div>
+      <div class="sec-head"><h2>Originals</h2><a href="${esc(A.originalsUrl)}" target="_blank" rel="noopener">Shop originals on emerald-skye.com ↗</a></div>
       <div class="works">${A.works.map((w, i) => `
-        <button type="button" class="work" data-work="${i}" aria-label="View ${esc(w.title || "artwork")} larger">
-          <img src="${esc(w.src)}" alt="${esc(w.title ? w.title + ": " : "")}${esc(w.description)}" loading="lazy">
-          <div class="wc">${w.title ? `<b>${esc(w.title)}</b>` : ""}<p>${esc(w.description)}</p></div>
-        </button>`).join("")}</div>
+        <div class="work">
+          <button type="button" class="work-img" data-work="${i}" aria-label="View ${esc(w.title)} larger"><img src="${esc(w.src)}" alt="${esc(w.title)} by ${esc(A.name)}" loading="lazy"></button>
+          <div class="wc">${workCaption(w)}</div>
+        </div>`).join("")}</div>
     </section>
     <section>
       <div class="sec-head"><h2>Portland shows</h2></div>
@@ -1015,14 +1024,22 @@ function renderAoty() {
     </section>`;
 }
 
+// Title, size, materials and sold/available status, as listed on the artist's own site.
+function workCaption(w) {
+  const status = w.sold ? `<span class="sold">Sold</span>` : `<a class="avail" href="${esc(w.url)}" target="_blank" rel="noopener">Available ↗</a>`;
+  return `<div class="wt"><b>${esc(w.title)}</b>${status}</div>
+    ${w.size ? `<div class="wm">${esc(w.size)}</div>` : ""}
+    ${w.materials ? `<p>${esc(w.materials)}</p>` : ""}`;
+}
+
 let lbIndex = 0, lbReturnFocus = null;
 function openLightbox(i) {
   const works = window.AOTY.works;
   lbIndex = (i + works.length) % works.length;
   const w = works[lbIndex];
   document.getElementById("lb-img").src = w.src;
-  document.getElementById("lb-img").alt = (w.title ? w.title + ": " : "") + w.description;
-  document.getElementById("lb-cap").innerHTML = `${w.title ? `<b>${esc(w.title)}</b>` : ""}${esc(w.description)}`;
+  document.getElementById("lb-img").alt = `${w.title} by ${window.AOTY.name}`;
+  document.getElementById("lb-cap").innerHTML = workCaption(w);
   const lb = document.getElementById("lightbox");
   if (lb.hidden) { lbReturnFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = "hidden"; }
   document.getElementById("lb-close").focus();

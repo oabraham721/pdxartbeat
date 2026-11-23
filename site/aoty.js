@@ -14,34 +14,32 @@ window.AOTY = {
     "Within these layered worlds, Emerald Skye offers not just images, but portals: invitations to explore the beauty, darkness, and mystery within ourselves.",
   ],
   materials: ["Acrylic", "Marker", "Colored pencil", "Oil pastel", "Beads", "Chain"],
-  motifs: ["Ocean & sea creatures", "Starfish", "Tentacles", "Jellyfish", "Handwritten confessions", "Divine femininity", "The ES monogram"],
   links: [
     { label: "Instagram", href: "https://www.instagram.com/emerald.paints.the.skye/" },
     { label: "TikTok", href: "https://www.tiktok.com/@emerald.skye.creates" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/emerald-ford-ab835a178/" },
     { label: "Email", href: "mailto:emeraldpaintstheskye@gmail.com" },
   ],
-  // title: null means the piece's title hasn't been provided yet; only the description is shown.
+  // From emerald-skye.com/originals (title, size, materials, sold status). Images are local copies in site/aoty/works/.
+  originalsUrl: "https://www.emerald-skye.com/originals",
   works: [
-    {
-      src: "aoty/siren-tongue.webp", title: "Siren Tongue",
-      description: "A lavender sea-being reclines across the canvas, green tentacles curling through her silver hair and spilling from her mouth. Bead-studded suckers catch the light against a dark kelp forest where small blue fish drift by. Heavily textured, sculptural paint.",
-    },
-    {
-      src: "aoty/homecoming.webp", title: "Homecoming",
-      description: "A figure with flowing emerald hair stands before a giant nautilus shell, set against dripping magenta veined with dark branches. White lightning and black thorns cut across the scene, and a small starfish tattoo marks her arm.",
-    },
-    {
-      src: "aoty/behind-the-chains.webp", title: "Behind the Chains",
-      description: "A shadowed portrait in deep teal and violet, its steady gaze held behind real metal chains hung vertically across the canvas. The ES monogram rests on her cheek like a mark of identity.",
-    },
-    {
-      src: "aoty/starfish-kiss.webp", title: null,
-      description: "Two figures meet in a kiss, one rendered in electric blue, the other in sage, a glowing orange starfish masking her eye. A hand with red nails reaches forward, bubbles rise, and scrawled confessions like “love me” and “romanticized” surface across a gold-olive ground.",
-    },
-    {
-      src: "aoty/jellyfish-drift.webp", title: null,
-      description: "A serene face floats beneath rippling blue water, hair drifting like seaweed, as golden jellyfish trail past. A pink starfish and small red fish swim nearby beside the handwritten line “All distractions fade away when I feel her.”",
-    },
+    {"src": "aoty/works/observers-of-subconsciousness.webp", "title": "Observers of Subconsciousness", "size": "48 × 36 in", "materials": "Acrylic, Oil Pastels, Colored Pencil, Marker, Silver Gems, Modeling Paste on canvas", "sold": false, "url": "https://www.emerald-skye.com/originals/p/observers-of-subconsciousness"},
+    {"src": "aoty/works/detachment.webp", "title": "Detachment", "size": "24 × 32 in", "materials": "Acrylic, Oil Pastels, Colored Pencil, Marker, Silver Gems, Modeling Paste on canvas", "sold": false, "url": "https://www.emerald-skye.com/originals/p/detachment"},
+    {"src": "aoty/works/expansion-25.webp", "title": "Expansion #25", "size": "36 × 36 in", "materials": "Acrylic, Modeling Paste", "sold": false, "url": "https://www.emerald-skye.com/originals/p/homecoming"},
+    {"src": "aoty/works/in-the-depths-of-self.webp", "title": "In the Depths of Self", "size": "11 × 14 in", "materials": "Acrylic, Modeling Paste", "sold": false, "url": "https://www.emerald-skye.com/originals/p/in-the-depths-of-self-4txy6"},
+    {"src": "aoty/works/are-you-awake.webp", "title": "Are You Awake?", "size": "24 × 24 in", "materials": "Modeling paste, acrylic, colored pencil, found chain, silver colored gems on canvas", "sold": false, "url": "https://www.emerald-skye.com/originals/p/are-you-awake"},
+    {"src": "aoty/works/are-you-watching.webp", "title": "Are You Watching?", "size": "32 × 46 in", "materials": "Acrylic, marker, colored pencil, silver and green colored gems", "sold": false, "url": "https://www.emerald-skye.com/originals/p/are-you-watching"},
+    {"src": "aoty/works/behind-the-chains.webp", "title": "Behind the Chains", "size": null, "materials": "Acrylic, Sterling Silver Chain, Modeling Paste on canvas", "sold": true, "url": "https://www.emerald-skye.com/originals/p/behind-the-chains"},
+    {"src": "aoty/works/patience.webp", "title": "Patience", "size": "23 × 35 in", "materials": "Acrylic, Oil Pastels, Colored Pencil, Marker, Silver Gems, Modeling Paste on canvas", "sold": false, "url": "https://www.emerald-skye.com/originals/p/patience-928mm"},
+    {"src": "aoty/works/closer.webp", "title": "Closer", "size": "11 × 14 in", "materials": "Modeling paste, acrylic, sterling silver chain, fresh water pearls, rhinestones, colored pencil and marker", "sold": true, "url": "https://www.emerald-skye.com/originals/p/closer"},
+    {"src": "aoty/works/in-her-eyes.webp", "title": "In Her Eyes", "size": "12 × 16 in", "materials": "Modeling paste, acrylic, colored pencil, found chain, silver colored gems on canvas", "sold": false, "url": "https://www.emerald-skye.com/originals/p/in-her-eyes"},
+    {"src": "aoty/works/float.webp", "title": "Float", "size": "11 × 14 in", "materials": "Modeling paste, acrylic, colored pencil, markers", "sold": false, "url": "https://www.emerald-skye.com/originals/p/the-solace-vessel-c5crh"},
+    {"src": "aoty/works/mozzarella-bunz.webp", "title": "Mozzarella Bunz", "size": "11 × 14 in", "materials": "Acrylic, makers, colored pencils, oil pastels", "sold": false, "url": "https://www.emerald-skye.com/originals/p/the-ember-vessel-cjrcc"},
+    {"src": "aoty/works/what-do-you-want-me-for.webp", "title": "What Do You Want Me For?", "size": "18 × 24 in", "materials": "Marker and colored pencil on paper", "sold": false, "url": "https://www.emerald-skye.com/originals/p/the-ridge-vase-9pwl2"},
+    {"src": "aoty/works/evolution.webp", "title": "Evolution", "size": "36 × 36 in", "materials": "Acrylic, marker, colored pencils, modeling paste", "sold": false, "url": "https://www.emerald-skye.com/originals/p/the-horizon-vase-ns8ys"},
+    {"src": "aoty/works/the-siren-tongue.webp", "title": "The Siren Tongue", "size": "18 × 24 in", "materials": "Acrylic, modeling paste, beads, faux pearls, colored pencil, pastels, and markers", "sold": false, "url": "https://www.emerald-skye.com/originals/p/the-haven-vessel-28rbm"},
+    {"src": "aoty/works/mini-shell-2.webp", "title": "Mini Shell 2", "size": "5 × 5 in", "materials": "Modeling paste, acrylic, marker", "sold": false, "url": "https://www.emerald-skye.com/originals/p/mini-shell-2"},
+    {"src": "aoty/works/serenade-the-moon.webp", "title": "Serenade The Moon", "size": "36 × 48 in", "materials": "Acrylic, Modeling Paste, Marker, Oil Pastels, Colored Pencils on Canvas", "sold": false, "url": "https://www.emerald-skye.com/originals/p/the-echo-vase-sh4ff"},
+    {"src": "aoty/works/mini-shell.webp", "title": "mini shell", "size": "3 × 3 in", "materials": "Modeling paste, acrylic, marker", "sold": true, "url": "https://www.emerald-skye.com/originals/p/mini-shell"},
   ],
 };
