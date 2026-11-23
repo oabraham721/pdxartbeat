@@ -119,6 +119,17 @@
   .search { position: relative; }
   .search input { font: inherit; font-size: 13.5px; width: 260px; padding: 8px 14px 8px 34px; border-radius: 999px; border: 1px solid var(--line); background: var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%236f6a63' stroke-width='2'%3E%3Ccircle cx='7' cy='7' r='5'/%3E%3Cpath d='m11 11 4 4'/%3E%3C/svg%3E") 12px center no-repeat; outline: none; }
   .search input:focus { border-color: var(--ink); }
+  .suggest { position: absolute; top: calc(100% + 6px); left: 0; width: 400px; max-height: 70vh; overflow-y: auto; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 12px 32px rgba(0,0,0,.14); padding: 6px; z-index: 1100; }
+  .suggest[hidden] { display: none; }
+  .sg-group { font: 600 11px Inter, sans-serif; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); padding: 10px 10px 4px; }
+  .suggest a { display: flex; gap: 10px; align-items: center; padding: 7px 10px; border-radius: 9px; }
+  .suggest a:hover, .suggest a[aria-selected="true"] { background: var(--bg); }
+  .sg-thumb { flex: none; width: 38px; height: 38px; border-radius: 7px; background: #e9e4dc center/cover no-repeat; }
+  .sg-text { min-width: 0; display: flex; flex-direction: column; }
+  .sg-text b { font-size: 14px; font-weight: 600; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .sg-text small { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .suggest a.sg-all { margin-top: 4px; border-top: 1px solid var(--line); border-radius: 0 0 9px 9px; font-size: 13.5px; font-weight: 600; color: var(--accent); padding: 11px 10px; }
+  .sg-empty { padding: 12px 10px; color: var(--muted); font-size: 13.5px; }
 
   /* cost + open status */
   .price { font-size: 10.5px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; border-radius: 5px; padding: 2px 6px; white-space: nowrap; }
@@ -200,6 +211,7 @@
     header.open nav { display: flex; flex-direction: column; gap: 12px; order: 3; width: 100%; font-size: 17px; }
     header.open .search { display: block; order: 4; width: 100%; }
     header.open .search input { width: 100%; }
+    .suggest { width: 100%; }
     .ehead { grid-template-columns: 1fr; gap: 20px; }
     .ehead h1 { font-size: 32px; }
     .burger { margin-left: auto; font-size: 22px; }
@@ -230,7 +242,7 @@
       <a href="#venues" data-nav="venues">Venues</a>
       <a href="#artists" data-nav="artists">Artists</a>
     </nav>
-    <form class="search" id="search-form" autocomplete="off"><input id="q" type="search" placeholder="Search artists, galleries, shows…" aria-label="Search artists, galleries and shows"></form>
+    <form class="search" id="search-form" autocomplete="off" role="search"><input id="q" type="search" placeholder="Search artists, galleries, shows…" aria-label="Search artists, galleries and shows" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggest"><div class="suggest" id="suggest" role="listbox" aria-label="Search suggestions" hidden></div></form>
     <div class="updated"><span class="dot"></span><span id="updated"></span></div>
     <button type="button" class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">☰</button>
   </div>
@@ -387,6 +399,8 @@ const pacificParts = (date = new Date()) => Object.fromEntries(new Intl.DateTime
 const TODAY = (p => `${p.year}-${p.month}-${p.day}`)(pacificParts());
 const addDays = (iso, n) => { const d = new Date(iso + "T12:00:00"); d.setDate(d.getDate() + n); return isoLocal(d); };
 const fmt = (iso, opts) => new Date(iso + "T12:00:00").toLocaleDateString("en-US", opts);
+// "Nov 28" this year, "Nov 28, 2027" otherwise, so long-running shows aren't mistaken for closing soon.
+const shortDate = iso => fmt(iso, iso.slice(0, 4) === TODAY.slice(0, 4) ? { month: "short", day: "numeric" } : { month: "short", day: "numeric", year: "numeric" });
 const fmtTime = t => { if (!t) return "All day"; let [h, m] = t.split(":").map(Number); const ap = h >= 12 ? "pm" : "am"; h = h % 12 || 12; return m ? `${h}:${String(m).padStart(2,"0")}${ap}` : `${h}${ap}`; };
 const daysBetween = (a, b) => Math.round((new Date(b + "T12:00:00") - new Date(a + "T12:00:00")) / 864e5);
 const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -509,8 +523,8 @@ function card(e, closing) {
   if (closing && left !== null) pill = `<span class="pill hot">${left === 0 ? "Closes today" : `Closes in ${left} day${left > 1 ? "s" : ""}`}</span>`;
   else if (isOver(e)) pill = `<span class="pill">Ended</span>`;
   else if (!isExhibition(e) && e.start_date) pill = `<span class="pill">${fmt(e.start_date, { weekday: "short", month: "short", day: "numeric" })}${e.start_time ? " · " + fmtTime(e.start_time) : ""}</span>`;
-  else if (e.start_date && e.start_date > TODAY) pill = `<span class="pill">Opens ${fmt(e.start_date, { month: "short", day: "numeric" })}</span>`;
-  else if (e.end_date) pill = `<span class="pill">Through ${fmt(e.end_date, { month: "short", day: "numeric" })}</span>`;
+  else if (e.start_date && e.start_date > TODAY) pill = `<span class="pill">Opens ${shortDate(e.start_date)}</span>`;
+  else if (e.end_date) pill = `<span class="pill">Through ${shortDate(e.end_date)}</span>`;
   else pill = `<span class="pill">On view now</span>`;
   const img = e.image_url ? `<div class="img" role="img" aria-label="${esc(e.title)}" style="background-image:url(${cssUrl(e.image_url)})">${pill}</div>`
                           : `<div class="img ph"><span aria-hidden="true">${esc(e.venue[0])}</span>${pill}</div>`;
@@ -695,6 +709,7 @@ function route() {
   document.querySelector("header").classList.remove("open");
   document.getElementById("burger").setAttribute("aria-expanded", "false");
   if (target !== "search") document.getElementById("q").value = "";
+  if (typeof closeSuggest === "function") closeSuggest();
   if (target === "home") renderHome();
   if (target === "onview") renderOnView(arg === "closing" ? "closing" : undefined);
   if (target === "venue") renderVenue(arg);
@@ -724,7 +739,9 @@ if (location.protocol.startsWith("http")) {
 function whenText(e) {
   const d = x => fmt(x, { weekday: "long", month: "long", day: "numeric" });
   if (isExhibition(e)) {
-    if (e.start_date && e.end_date) return `${fmt(e.start_date, { month: "short", day: "numeric" })} – ${fmt(e.end_date, { month: "short", day: "numeric", year: "numeric" })}`;
+    if (e.start_date && e.end_date) return e.start_date.slice(0, 4) === e.end_date.slice(0, 4)
+      ? `${fmt(e.start_date, { month: "short", day: "numeric" })} – ${fmt(e.end_date, { month: "short", day: "numeric", year: "numeric" })}`
+      : `${fmt(e.start_date, { month: "short", day: "numeric", year: "numeric" })} – ${fmt(e.end_date, { month: "short", day: "numeric", year: "numeric" })}`;
     if (e.end_date) return `On view through ${d(e.end_date)}`;
     if (e.start_date) return `Opens ${d(e.start_date)}`;
     return "On view now";
@@ -802,8 +819,8 @@ function artistSummary(a) {
   const venuesShown = [...new Set(a.events.map(e => e.venue))];
   const img = a.events.find(e => e.image_url)?.image_url;
   let when = null;
-  if (now) when = { cls: "now", text: `On view${now.end_date ? " through " + fmt(now.end_date, { month: "short", day: "numeric" }) : " now"}` };
-  else if (next) when = { cls: "soon", text: `${isExhibition(next) ? "Opens" : "Next"} ${fmt(next.start_date, { month: "short", day: "numeric" })}` };
+  if (now) when = { cls: "now", text: `On view${now.end_date ? " through " + shortDate(now.end_date) : " now"}` };
+  else if (next) when = { cls: "soon", text: `${isExhibition(next) ? "Opens" : "Next"} ${shortDate(next.start_date)}` };
   else if (cur.length) when = { cls: "", text: `${cur.length} listing${cur.length > 1 ? "s" : ""}` };
   return { now: !!now, upcoming: !now && !!next, current: cur.length > 0, venuesShown, img, when };
 }
@@ -844,16 +861,28 @@ function renderArtists() {
     || `<p style="color:var(--muted)">No artists match this filter.</p>`;
 }
 
-function renderSearch(q) {
-  document.getElementById("q").value = q;
+// Shared by the results page and the live dropdown. Results that start with the query rank first.
+function searchMatches(q) {
   const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
   const hit = text => terms.every(t => text.toLowerCase().includes(t));
+  const ql = q.toLowerCase().trim();
+  const rank = name => { const n = name.toLowerCase(); return n.startsWith(ql) ? 0 : n.split(/[\s\-—:]+/).some(w => w.startsWith(terms[0] || "")) ? 1 : 2; };
+  const byRank = key => (a, b) => rank(key(a)) - rank(key(b)) || key(a).localeCompare(key(b));
+  if (!terms.length) return { terms, artists: [], vs: [], evs: [], pastEvs: [] };
+  return {
+    terms,
+    artists: Object.entries(artistIndex).filter(([, a]) => hit(a.name)).sort(byRank(([, a]) => a.name)),
+    vs: venues.filter(v => hit(`${v.name} ${v.neighborhood} ${v.address}`)).sort(byRank(v => v.name)),
+    evs: events.filter(e => !isOver(e) && hit(`${e.title} ${(e.artists || []).join(" ")} ${e.venue} ${e.description} ${e.neighborhood}`)).sort(byRank(e => e.title)),
+    pastEvs: PAST.filter(e => hit(`${e.title} ${(e.artists || []).join(" ")} ${e.venue}`)),
+  };
+}
+
+function renderSearch(q) {
+  document.getElementById("q").value = q;
+  const { terms, artists, vs, evs, pastEvs } = searchMatches(q);
   document.getElementById("s-title").innerHTML = q ? `Results for <em>“${esc(q)}”</em>` : "Search";
   if (!terms.length) { document.getElementById("s-body").innerHTML = ""; return; }
-  const artists = Object.entries(artistIndex).filter(([, a]) => hit(a.name));
-  const vs = venues.filter(v => hit(`${v.name} ${v.neighborhood} ${v.address}`));
-  const evs = events.filter(e => hit(`${e.title} ${(e.artists || []).join(" ")} ${e.venue} ${e.description} ${e.neighborhood}`));
-  const pastEvs = PAST.filter(e => hit(`${e.title} ${(e.artists || []).join(" ")} ${e.venue}`));
   document.getElementById("s-body").innerHTML = (!artists.length && !vs.length && !evs.length && !pastEvs.length)
     ? `<p style="color:var(--muted)">No matches. Try an artist's last name, a gallery, or a word like “textile”.</p>`
     : `${artists.length ? `<h3>Artists (${artists.length})</h3><div class="pills">${artists.slice(0, 30).map(([s, a]) => `<a href="#artist/${s}">${esc(a.name)} <small>${a.events.length}</small></a>`).join("")}</div>` : ""}
@@ -862,18 +891,68 @@ function renderSearch(q) {
        ${pastEvs.length ? `<h3>Past (${pastEvs.length})</h3><div class="grid past">${pastEvs.map(e => card(e)).join("")}</div>` : ""}`;
 }
 
+/* ---------- live search suggestions ---------- */
+const qInput = document.getElementById("q");
+const suggestBox = document.getElementById("suggest");
+let suggestItems = [], suggestIdx = -1;
+
+function closeSuggest() {
+  suggestBox.hidden = true;
+  suggestIdx = -1;
+  qInput.setAttribute("aria-expanded", "false");
+  qInput.removeAttribute("aria-activedescendant");
+}
+function highlight(i) {
+  suggestIdx = i;
+  suggestBox.querySelectorAll("[role=option]").forEach((el, n) => el.setAttribute("aria-selected", String(n === i)));
+  const el = suggestBox.querySelector(`#sg-${i}`);
+  if (el) { qInput.setAttribute("aria-activedescendant", el.id); el.scrollIntoView({ block: "nearest" }); }
+}
+function openSuggest(q) {
+  const { artists, vs, evs, pastEvs } = searchMatches(q);
+  const thumb = url => url ? `<span class="sg-thumb" style="background-image:url(${cssUrl(url)})"></span>` : `<span class="sg-thumb"></span>`;
+  const groups = [
+    ["Artists", artists.slice(0, 3).map(([s, a]) => ({ href: `#artist/${s}`, img: a.events.find(e => e.image_url)?.image_url, title: a.name, sub: [...new Set(a.events.map(e => e.venue))].slice(0, 2).join(", ") }))],
+    ["Venues", vs.slice(0, 3).map(v => ({ href: `#venue/${slug(v.name)}`, img: events.find(e => e.venue === v.name && e.image_url)?.image_url, title: v.name, sub: [v.neighborhood, openStatus(v.name)?.text].filter(Boolean).join(" · ") }))],
+    ["Shows & events", evs.slice(0, 4).map(e => ({ href: `#event/${e.id}`, img: e.image_url, title: e.title, sub: `${e.venue} · ${whenText(e)}` }))],
+  ].filter(([, items]) => items.length);
+  const total = artists.length + vs.length + evs.length + pastEvs.length;
+  suggestItems = groups.flatMap(([, items]) => items).concat([{ href: "#search/" + encodeURIComponent(q), all: true }]);
+  let n = 0;
+  suggestBox.innerHTML = (groups.length ? groups.map(([label, items]) => `<div class="sg-group" role="presentation">${esc(label)}</div>` + items.map(it =>
+    `<a role="option" id="sg-${n++}" aria-selected="false" href="${esc(it.href)}">${thumb(it.img)}<span class="sg-text"><b>${esc(it.title)}</b><small>${esc(it.sub)}</small></span></a>`).join("")).join("")
+    : `<div class="sg-empty">No quick matches</div>`)
+    + `<a role="option" id="sg-${n}" aria-selected="false" class="sg-all" href="${esc(suggestItems[suggestItems.length - 1].href)}">${total ? `See all ${total} result${total > 1 ? "s" : ""}` : "Search"} for “${esc(q)}” →</a>`;
+  suggestBox.hidden = false;
+  suggestIdx = -1;
+  qInput.setAttribute("aria-expanded", "true");
+}
+
 document.getElementById("search-form").addEventListener("submit", ev => {
   ev.preventDefault();
-  location.hash = "search/" + encodeURIComponent(document.getElementById("q").value.trim());
+  const target = suggestIdx >= 0 ? suggestItems[suggestIdx].href : "#search/" + encodeURIComponent(qInput.value.trim());
+  closeSuggest();
+  if (qInput.value.trim()) location.hash = target.slice(1);
 });
-document.getElementById("q").addEventListener("input", ev => {
-  const q = ev.target.value.trim();
-  if (q.length < 2) return;
-  // Live results without adding a history entry per keystroke.
-  history.replaceState(null, "", "#search/" + encodeURIComponent(q));
-  document.querySelectorAll(".page").forEach(p => p.classList.toggle("show", p.id === "p-search"));
-  renderSearch(q);
+qInput.addEventListener("input", () => {
+  const q = qInput.value.trim();
+  if (q.length < 2) { closeSuggest(); return; }
+  openSuggest(q);
+  // Already on the results page: keep it in sync without adding a history entry per keystroke.
+  if (location.hash.startsWith("#search")) { history.replaceState(null, "", "#search/" + encodeURIComponent(q)); renderSearch(q); }
 });
+qInput.addEventListener("keydown", ev => {
+  if (suggestBox.hidden) { if (ev.key === "ArrowDown" && qInput.value.trim().length >= 2) openSuggest(qInput.value.trim()); return; }
+  const count = suggestBox.querySelectorAll("[role=option]").length;
+  if (ev.key === "ArrowDown") { ev.preventDefault(); highlight((suggestIdx + 1) % count); }
+  else if (ev.key === "ArrowUp") { ev.preventDefault(); highlight(suggestIdx <= 0 ? count - 1 : suggestIdx - 1); }
+  else if (ev.key === "Escape") { closeSuggest(); }
+});
+qInput.addEventListener("focus", () => { if (qInput.value.trim().length >= 2) openSuggest(qInput.value.trim()); });
+// mousedown fires before the input's blur, so clicking a suggestion isn't cancelled by the dropdown closing.
+suggestBox.addEventListener("mousedown", ev => ev.preventDefault());
+suggestBox.addEventListener("click", ev => { if (ev.target.closest("a")) { closeSuggest(); qInput.blur(); } });
+qInput.addEventListener("blur", closeSuggest);
 
 let venuesHood = "";
 function renderVenues() {
