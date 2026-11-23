@@ -27,7 +27,7 @@
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
 
-  header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 1000; }
+  header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 1100; } /* above Leaflet controls (z 1000) */
   header .wrap { display: flex; align-items: center; gap: 32px; height: 68px; }
   .logo { font-family: Fraunces, serif; font-weight: 800; font-size: 22px; letter-spacing: -0.5px; }
   .logo span { color: var(--accent); }
@@ -239,7 +239,7 @@
   .lightbox figcaption { color: #e9e6e1; max-width: 720px; text-align: center; font-size: 14px; line-height: 1.5; }
   .lightbox figcaption b { display: block; font: 600 22px Fraunces, serif; color: #fff; margin-bottom: 4px; }
   .lb-close, .lb-nav { background: none; border: 0; color: #fff; cursor: pointer; font-size: 30px; }
-  .lb-close { position: absolute; top: 14px; right: 20px; font-size: 24px; }
+  .lb-close { position: absolute; top: 10px; right: 12px; font-size: 24px; padding: 8px 12px; }
   .lb-nav { font-size: 54px; line-height: 1; opacity: .8; }
   .lb-nav:hover { opacity: 1; }
 
@@ -265,10 +265,20 @@
     nav, .updated, .search { display: none; }
     .burger { cursor: pointer; user-select: none; }
     header.open .wrap { flex-wrap: wrap; height: auto; padding-top: 14px; padding-bottom: 16px; row-gap: 14px; }
-    header.open nav { display: flex; flex-direction: column; gap: 12px; order: 3; width: 100%; font-size: 17px; }
+    header.open nav { display: flex; flex-direction: column; gap: 0; order: 3; width: 100%; font-size: 17px; }
+    header.open nav a { padding: 11px 0; min-height: 44px; border-bottom: 1px solid var(--line); }
     header.open .search { display: block; order: 4; width: 100%; }
     header.open .search input { width: 100%; }
     .suggest { width: 100%; }
+    /* iOS Safari zooms the page when focusing a field with text under 16px. */
+    .search input, select { font-size: 16px; }
+    select { height: 40px; }
+    .chip { padding: 9px 14px; }
+    .letters { gap: 2px; }
+    .letters button, .letters span { width: 36px; height: 36px; font-size: 14px; }
+    .badge, .price, .sold, .type-tag { font-size: 11px; }
+    .burger { padding: 8px 10px; margin-right: -10px; }
+    .lb-nav { font-size: 40px; }
     .aoty-hero { grid-template-columns: 1fr; gap: 24px; padding-top: 22px; }
     .aoty-hero h1 { font-size: 46px; }
     .aoty-portrait { max-height: 70vh; }
@@ -1059,6 +1069,15 @@ document.addEventListener("keydown", ev => {
   if (ev.key === "Escape") closeLightbox();
   if (ev.key === "ArrowLeft") openLightbox(lbIndex - 1);
   if (ev.key === "ArrowRight") openLightbox(lbIndex + 1);
+});
+// Swipe left/right between artworks on touch screens.
+let touchX = null;
+document.getElementById("lightbox").addEventListener("touchstart", ev => { touchX = ev.touches[0].clientX; }, { passive: true });
+document.getElementById("lightbox").addEventListener("touchend", ev => {
+  if (touchX === null) return;
+  const dx = ev.changedTouches[0].clientX - touchX;
+  touchX = null;
+  if (Math.abs(dx) > 50) openLightbox(lbIndex + (dx < 0 ? 1 : -1));
 });
 
 function renderSearch(q) {
