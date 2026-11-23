@@ -12,11 +12,11 @@ A GitHub Actions workflow ([`.github/workflows/update.yml`](.github/workflows/up
    - reads its iCal feed if `feed` is `ics` and a feed link is found, otherwise
    - fetches the page(s) in `events_url` (separated by ` | `), flattens them to text, and asks OpenAI (`gpt-4o-mini`) to extract events.
 
-   Events are then cleaned (bad dates, past events and shop promotions dropped, duplicates removed, generic titles like "Opening Reception" given their show's name, gallery hours mistaken for event times cleared, broken image links removed), given a stable `id`, and priced (`free` / `suggested_donation` / `ticketed`, falling back to the venue's admission). Results go to `events.json`, every event is merged into `archive.json` (never pruned — powers past shows on artist pages), and `events.ics` is written as a subscribable feed.
+   Events are then cleaned (bad dates, past events and shop promotions dropped, duplicates removed, generic titles like "Opening Reception" given their show's name, gallery hours mistaken for event times cleared, broken image links removed), given a stable `id`, and priced (`free` / `suggested_donation` / `ticketed`, falling back to the venue's admission). Results go to `events.json`, every event is merged into `archive.json` (never pruned — powers past shows on artist pages).
 
    If a run finds less than half as many events as the last one (e.g. an OpenAI outage), it exits without overwriting `events.json`.
 2. **`venue_details.py`** (1st of each month, or on demand) extracts each venue's weekly hours, admission and free-admission days into `venue_details.json`.
-3. **`build_site.py`** writes `site/data.js`, `site/events.ics` and one `site/ics/<id>.ics` per event, and geocodes any new venue into `venue_coords.json`.
+3. **`build_site.py`** writes `site/data.js`, the subscribable feed `site/events.ics` (one-off events plus a "Last day" reminder per exhibition) and one `site/ics/<id>.ics` per event, and geocodes any new venue into `venue_coords.json`.
 4. The bot commits the refreshed data files (so the archive persists between runs) and deploys `site/` to GitHub Pages.
 
 Pushing changes to `site/` or `build_site.py` redeploys the site from the committed data without scraping.

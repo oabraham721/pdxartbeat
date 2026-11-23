@@ -14,9 +14,8 @@ from typing import List, Tuple
 from zoneinfo import ZoneInfo
 
 from ai_extract import extract_events
-from config import ARCHIVE_JSON, EVENTS_ICS, EVENTS_JSON, MAX_PAGE_CHARS, TIMEZONE, VENUE_DETAILS_JSON
+from config import ARCHIVE_JSON, EVENTS_JSON, MAX_PAGE_CHARS, TIMEZONE, VENUE_DETAILS_JSON
 from fetch import fetch_html, find_ics_link, html_to_text, is_image
-from ics_export import write_ics
 from ics_source import events_from_ics
 from models import Event, Venue, event_id, load_venues
 
@@ -233,7 +232,6 @@ def main():
     EVENTS_JSON.write_text(json.dumps(output, indent=2, ensure_ascii=False))
     logger.info("Wrote %d events to %s", len(events), EVENTS_JSON)
     logger.info("Archive now holds %d events", update_archive(events, today))
-    logger.info("Wrote %d calendar entries to %s", write_ics(events, EVENTS_ICS), EVENTS_ICS)
 
 
 if __name__ == "__main__":

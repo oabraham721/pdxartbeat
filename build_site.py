@@ -13,8 +13,8 @@ from pathlib import Path
 
 import requests
 
-from config import ARCHIVE_JSON, BASE_DIR, EVENTS_ICS, EVENTS_JSON, VENUE_DETAILS_JSON
-from ics_export import write_event_ics
+from config import ARCHIVE_JSON, BASE_DIR, EVENTS_JSON, VENUE_DETAILS_JSON
+from ics_export import write_event_ics, write_ics
 from models import Event, load_venues
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
@@ -72,18 +72,18 @@ def main():
     }
     (SITE_DIR / "data.js").write_text("window.ART_DATA = " + json.dumps(bundle, ensure_ascii=False) + ";\n")
 
-    if EVENTS_ICS.exists():
-        shutil.copy(EVENTS_ICS, SITE_DIR / "events.ics")
+    fields = set(Event.__dataclass_fields__)
+    events = [Event(**{k: v for k, v in e.items() if k in fields}) for e in data["events"]]
+    feed_count = write_ics(events, SITE_DIR / "events.ics")
 
     # One downloadable .ics per event: more reliable than data: URLs, which some browsers block or open as text.
     ics_dir = SITE_DIR / "ics"
     shutil.rmtree(ics_dir, ignore_errors=True)
     ics_dir.mkdir()
-    fields = set(Event.__dataclass_fields__)
-    written = sum(write_event_ics(Event(**{k: v for k, v in e.items() if k in fields}), ics_dir / f"{e['id']}.ics") for e in data["events"])
+    written = sum(write_event_ics(e, ics_dir / f"{e.id}.ics") for e in events)
 
-    logger.info("Built site: %d events, %d archived, %d venue details, %d per-event calendar files",
-                len(data["events"]), len(past), len(bundle["details"]), written)
+    logger.info("Built site: %d events, %d archived, %d venue details, %d feed entries, %d per-event calendar files",
+                len(events), len(past), len(bundle["details"]), feed_count, written)
 
 
 if __name__ == "__main__":

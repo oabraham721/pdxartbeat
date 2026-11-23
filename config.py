@@ -12,7 +12,6 @@ OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 VENUES_CSV = BASE_DIR / "venues.csv"
 EVENTS_JSON = BASE_DIR / "events.json"
 ARCHIVE_JSON = BASE_DIR / "archive.json"
-EVENTS_ICS = BASE_DIR / "events.ics"
 VENUE_DETAILS_JSON = BASE_DIR / "venue_details.json"
 
 TIMEZONE = "America/Los_Angeles"
