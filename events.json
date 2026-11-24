@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-23T16:44:42-08:00",
-  "event_count": 123,
+  "generated_at": "2026-11-24T15:00:07-08:00",
+  "event_count": 122,
   "events": [
     {
       "title": "American Land",
@@ -11,7 +11,7 @@
       "start_time": null,
       "end_time": null,
       "artists": [],
-      "description": "This exhibition celebrates the American landscape shaped by Native peoples.",
+      "description": "This exhibition celebrates the American landscape shaped by the stewardship of Native peoples.",
       "url": "https://portlandartmuseum.org/event/american-land/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/07/William-Sartain-The-Aqueduct-904x565.jpg",
       "neighborhood": "Downtown",
@@ -87,7 +87,7 @@
       "start_time": null,
       "end_time": null,
       "artists": [],
-      "description": "This exhibition features the first exhibition of sketch-like avant-garde paintings.",
+      "description": "This exhibition features the first exhibition of sketch-like avant-garde paintings organized by French artists.",
       "url": "https://portlandartmuseum.org/event/global-impressionism/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2024/08/Monet-Waterlillies-unframed-904x565.jpg",
       "neighborhood": "Downtown",
@@ -144,7 +144,7 @@
       "start_time": null,
       "end_time": null,
       "artists": [],
-      "description": "The Black Art and Experiences (B.A.E.) Galleries celebrate the breadth, depth, and vitality of Black artistic expression.",
+      "description": "The Black Art and Experiences (B.A.E.) Galleries are a gallery floor dedicated to celebrating the breadth, depth, and vitality of Black artistic expression.",
       "url": "https://portlandartmuseum.org/event/black-art-and-experiences/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/11/feature-Black-Art-and-Experiences-904x565.jpg",
       "neighborhood": "Downtown",
@@ -163,7 +163,7 @@
       "start_time": null,
       "end_time": null,
       "artists": [],
-      "description": "A display of ephemera foregrounding the history of the Black visual arts community in Northeast Portland.",
+      "description": "A display of ephemera and an extended documentary trailer foregrounding the history of the Black visual arts community in Northeast Portland.",
       "url": "https://portlandartmuseum.org/event/black-arts-pdx-at-the-create-space/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/11/BAE-Activation-Mural-Final-R-904x565.jpg",
       "neighborhood": "Downtown",
@@ -182,7 +182,7 @@
       "start_time": null,
       "end_time": null,
       "artists": [],
-      "description": "The inaugural exhibition in the heart of the Rothko Pavilion speaks to our connection to our natural environment.",
+      "description": "The inaugural exhibition in the heart of the Rothko Pavilion speaks to the strong sense of place experienced through our connection to our natural environment.",
       "url": "https://portlandartmuseum.org/event/forming-nature-nature-formed/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/10/20251222_FormingNature_CFU_017-Website-JPG-2600-904x565.jpg",
       "neighborhood": "Downtown",
@@ -220,7 +220,7 @@
       "start_time": null,
       "end_time": null,
       "artists": [],
-      "description": "This exhibition showcases recent acquisitions alongside signature works reflecting on contemporary narratives.",
+      "description": "This exhibition showcases recent acquisitions alongside signature works reflecting on contemporary change.",
       "url": "https://portlandartmuseum.org/event/here-we-are/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/10/feature-Leigh-Simone-Sentinel-904x565.jpg",
       "neighborhood": "Downtown",
@@ -239,7 +239,7 @@
       "start_time": null,
       "end_time": null,
       "artists": [],
-      "description": "This exhibition features works by women artists, queer artists, and artists of color.",
+      "description": "This exhibition features works by women artists, queer artists, and artists of color emphasizing physicality and expressiveness.",
       "url": "https://portlandartmuseum.org/event/im-material/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/09/Raymond-Saunders-Assemblage-904x565.jpg",
       "neighborhood": "Downtown",
@@ -260,7 +260,7 @@
       "artists": [
         "Lisa Jarrett"
       ],
-      "description": "Lisa Jarrett weaves together her interest in migration and tracing lost familial histories.",
+      "description": "Lisa Jarrett weaves together her interest in migration and tracing lost familial histories to Beauty Supply stores and salons.",
       "url": "https://portlandartmuseum.org/event/lisa-jarrett-tenderhead/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/12/Reinstallation-Tenderhead_CFU_034-904x565.jpg",
       "neighborhood": "Downtown",
@@ -300,7 +300,7 @@
       "artists": [
         "Marco Brambilla"
       ],
-      "description": "A lavish and satirical take on the silver-screen spectacle of Hollywood dreams.",
+      "description": "A lavish and satirical take on the silver-screen spectacle of Hollywood dreams and excesses.",
       "url": "https://portlandartmuseum.org/event/marco-brambilla/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2026/03/20251222_Brambilla_CFU_01-Press-Kit-JPG-2400-Max-PPI-904x565.jpg",
       "neighborhood": "Downtown",
@@ -361,7 +361,7 @@
       "artists": [],
       "description": "This exhibition marks Mount Hood as a natural monument for Portlanders.",
       "url": "https://portlandartmuseum.org/event/mystic-mountain/",
-      "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/07/William-Sartain-The-Aqueduct-904x565.jpg",
+      "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/07/Albert-Bierstadt-Mount-Hood-904x565.jpg",
       "neighborhood": "Downtown",
       "address": "1219 SW Park Ave",
       "price": "ticketed",
@@ -380,7 +380,7 @@
       "artists": [],
       "description": "This exhibition showcases ancient Greek art known from objects excavated from rubbish heaps and graves.",
       "url": "https://portlandartmuseum.org/event/myth-and-memory/",
-      "image_url": "",
+      "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/07/Exekias-Amphora-904x565.jpg",
       "neighborhood": "Downtown",
       "address": "1219 SW Park Ave",
       "price": "ticketed",
@@ -399,7 +399,7 @@
       "artists": [
         "Pipilotti Rist"
       ],
-      "description": "Pipilotti Rist dissolves exhibition spaces through luminous color and moving imagery.",
+      "description": "Pipilotti Rist dissolves exhibition spaces through luminous color, moving imagery, and melodic sound.",
       "url": "https://portlandartmuseum.org/event/pipilotti-rist/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/09/Rist_4th-Floor-to-Mildness-904x565.jpg",
       "neighborhood": "Downtown",
@@ -420,7 +420,7 @@
       "artists": [
         "Rick Bartow"
       ],
-      "description": "Bartow’s gift as a visual storyteller takes us on a narrative journey reflecting on his Native history.",
+      "description": "Bartow’s gift as a visual storyteller takes us on a narrative journey reflecting on his Wiyot identity.",
       "url": "https://portlandartmuseum.org/event/rick-bartow-storyteller/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/09/Rick-Bartow-Dog-Pack-Series-904x565.jpg",
       "neighborhood": "Downtown",
@@ -441,7 +441,7 @@
       "artists": [],
       "description": "This exhibition highlights Native American art gifts and purchases since the year 2000.",
       "url": "https://portlandartmuseum.org/event/shifting-the-narrative/",
-      "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/07/Albert-Bierstadt-Mount-Hood-904x565.jpg",
+      "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/07/William-Sartain-The-Aqueduct-904x565.jpg",
       "neighborhood": "Downtown",
       "address": "1219 SW Park Ave",
       "price": "ticketed",
@@ -458,7 +458,7 @@
       "start_time": null,
       "end_time": null,
       "artists": [],
-      "description": "This exhibition features a concise, chronological display of works by Mark Rothko.",
+      "description": "This exhibition features a concise, chronological display of works by the renowned American artist Mark Rothko.",
       "url": "https://portlandartmuseum.org/event/the-art-of-mark-rothko/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/07/featured-Rothko-No16-Green-White-Yellow-v2-904x565.jpg",
       "neighborhood": "Downtown",
@@ -477,7 +477,7 @@
       "start_time": null,
       "end_time": null,
       "artists": [],
-      "description": "This exhibition represents a rich tapestry of work created from experiences of movement and migration.",
+      "description": "This exhibition represents a rich tapestry of work created from the experiences of movement, migration, displacement, hope, home, memory, and loss.",
       "url": "https://portlandartmuseum.org/event/to-gather-your-leaving/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/09/Sharita-Towne-for-us-904x565.jpg",
       "neighborhood": "Downtown",
@@ -498,7 +498,7 @@
       "artists": [],
       "description": "This exhibition explores diverse expressions of Buddhist visual culture from the 6th to 21st centuries.",
       "url": "https://portlandartmuseum.org/event/word-in-flower-arts-of-buddhism/",
-      "image_url": "https://portlandartmuseum.org/wp-content/uploads/2025/11/feature-Jang-Jin-ik-Fulfillment-of-Emptiness-904x565.jpg",
+      "image_url": "",
       "neighborhood": "Downtown",
       "address": "1219 SW Park Ave",
       "price": "ticketed",
@@ -517,7 +517,7 @@
       "artists": [
         "Todd McGrain"
       ],
-      "description": "Todd McGrain’s original bust of York was secretly installed on Mount Tabor in 2021.",
+      "description": "Todd McGrain’s original bust of York, the enslaved man who was the only African American member of the Lewis and Clark expedition.",
       "url": "https://portlandartmuseum.org/event/todd-mcgrain-debut-of-york/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2026/03/York-904x565.jpg",
       "neighborhood": "Downtown",
@@ -538,7 +538,7 @@
       "artists": [
         "Lisa Jarrett"
       ],
-      "description": "This exhibition is co-curated by Lisa Jarrett and the Harriet Tubman Center for Expanded Curatorial Practice.",
+      "description": "Drawing from the Museum’s collection, this exhibition is co-curated by Lisa Jarrett and the Harriet Tubman Center for Expanded Curatorial Practice.",
       "url": "https://portlandartmuseum.org/event/harriet-tubman-center-museum/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2026/04/KSMoCA-IMG_1102-904x565.jpg",
       "neighborhood": "Downtown",
@@ -557,7 +557,7 @@
       "start_time": null,
       "end_time": null,
       "artists": [],
-      "description": "Nine Women Artists will feature the work of artists shown in Katherine Ace’s portrait painting.",
+      "description": "Inspired by Katherine Ace’s 9 Portraits, this exhibition features the work of the artists shown in Ace’s portrait painting.",
       "url": "https://portlandartmuseum.org/event/nine-women-artists/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2026/05/ACE279_9Portraits-904x565.jpg",
       "neighborhood": "Downtown",
@@ -633,7 +633,7 @@
       "start_time": null,
       "end_time": null,
       "artists": [],
-      "description": "This exhibition explores an expansive concept of work, from manual labor to art creation.",
+      "description": "This exhibition explores an expansive concept of work, from manual labor to art creation and childcare.",
       "url": "https://portlandartmuseum.org/event/an-honest-days-work-photographs-of-labor/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2026/05/Labor-photography-904x565.jpg",
       "neighborhood": "Downtown",
@@ -665,7 +665,7 @@
       "id": "e52304d58bad"
     },
     {
-      "title": "Anish Kapoor: Dissolving Margins",
+      "title": "Anish Kapoor: Dissolving Margins, from the Collections of Jordan D. Schnitzer and His Family Foundation",
       "venue": "Jordan Schnitzer Museum of Art at PSU",
       "event_type": "exhibition",
       "start_date": "2026-08-28",
@@ -683,7 +683,7 @@
       "price": "free",
       "price_note": "",
       "source": "ai",
-      "id": "a426601b5c8c"
+      "id": "75531e75224a"
     },
     {
       "title": "Rose Salane: Afterlife in Public",
@@ -718,7 +718,7 @@
         "Srijon Chowdhury",
         "Frank Heath"
       ],
-      "description": "This exhibition explores themes of impermanence and temporary community inspired by Ursula K. Le Guin.",
+      "description": "An exhibition exploring themes of impermanence and temporary community inspired by Ursula K. Le Guin.",
       "url": "https://www.lclark.edu/live/news/58521-converge-45-srijon-chowdhury-phool-frank-heath",
       "image_url": "https://www.lclark.edu/live/image/gid/225/width/800/src_region/0,0,2048,1152/113946_2022_06_06_SELECTS_2_1.rev.1784574904.jpg",
       "neighborhood": "Southwest",
@@ -755,9 +755,7 @@
       "end_date": "2027-09-12",
       "start_time": null,
       "end_time": null,
-      "artists": [
-        "Watanabe Sadao"
-      ],
+      "artists": [],
       "description": "This exhibition introduces the artistry of Watanabe Sadao, who developed a unique stencil printing process.",
       "url": "https://portlandartmuseum.org/event/watanabe-sadao/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2026/07/Watanabe-Sadao-A-Modern-Madonna-904x565.jpg",
@@ -796,7 +794,7 @@
       "start_time": null,
       "end_time": null,
       "artists": [],
-      "description": "What is the purpose of a public monument? How does a monument remind us of what we care about?",
+      "description": "What is the purpose of a public monument? To whom does it belong?",
       "url": "https://portlandartmuseum.org/event/imagine-monuments-a-partnership-with-arts-in-education-of-the-gorge/",
       "image_url": "https://portlandartmuseum.org/wp-content/uploads/2026/09/Imagine-Monuments-904x565.jpg",
       "neighborhood": "Downtown",
@@ -817,7 +815,7 @@
       "artists": [
         "Daniel Robinson"
       ],
-      "description": "Recent paintings marking the continuation of his engagement with agrarian landscapes.",
+      "description": "A presentation of recent paintings focusing on agrarian landscapes and industrial architecture.",
       "url": "https://froelickgallery.com/exhibitions/150-daniel-robinson-promised-land/overview/",
       "image_url": "https://static-assets.artlogic.net/w_1200,c_limit,f_auto,fl_lossy,q_auto/ws-froelickgallery/usr/images/exhibitions/main_image_override/150/rob044_corner.farm_daniel-robinson-2026_22-x-30-1-.jpg",
       "neighborhood": "Pearl",
@@ -889,28 +887,6 @@
       "price_note": "",
       "source": "ai",
       "id": "b23f0a48d8fb"
-    },
-    {
-      "title": "Moonlight Mischief",
-      "venue": "Alberta Street Gallery",
-      "event_type": "exhibition",
-      "start_date": "2026-10-29",
-      "end_date": "2026-11-23",
-      "start_time": "11:00",
-      "end_time": "19:00",
-      "artists": [
-        "bd dombrowsky",
-        "Leslie McMillan"
-      ],
-      "description": "An exhibition featuring the works of bd dombrowsky and Leslie McMillan.",
-      "url": "https://www.albertastreetgallery.com/events.html",
-      "image_url": "https://www.albertastreetgallery.com/uploads/1/9/1/0/19101421/published/bd1_2.jpg?1793116884",
-      "neighborhood": "Alberta",
-      "address": "1829 NE Alberta St",
-      "price": "free",
-      "price_note": "",
-      "source": "ai",
-      "id": "579ef416ed05"
     },
     {
       "title": "Scenes of Serenity: Photography by Mathieu Rossi",
@@ -1091,7 +1067,7 @@
       "artists": [
         "Nicola López"
       ],
-      "description": "A multimedia practice spanning drawing, printmaking, installation, and hand-drawn animated video by artist Nicola López.",
+      "description": "A multimedia practice spanning drawing, printmaking, installation, and hand-drawn animated video by Nicola López.",
       "url": "https://www.elizabethleach.com/exhibitions/272-unearthed-nicola-lopez/overview/",
       "image_url": "https://static-assets.artlogic.net/w_1200,c_limit,f_auto,fl_lossy,q_auto/ws-artlogicwebsite2343/usr/images/exhibitions/main_image_override/272/lopez_unearthed_8.jpg",
       "neighborhood": "Pearl",
@@ -1223,67 +1199,42 @@
       "id": "43796305ade5"
     },
     {
-      "title": "Opening Reception: Graham Franciose — Meditations in Vermillion",
-      "venue": "Antler Gallery",
-      "event_type": "opening_reception",
+      "title": "The Gift Show",
+      "venue": "Alberta Street Gallery",
+      "event_type": "exhibition",
       "start_date": "2026-11-27",
-      "end_date": null,
-      "start_time": "18:00",
-      "end_time": "21:00",
-      "artists": [
-        "Graham Franciose"
-      ],
-      "description": "",
-      "url": "https://www.antlerpdx.com/collections/graham-franciose-meditations-in-vermillion",
-      "image_url": "https://i.shgcdn.com/df22c5cb-14be-4112-8eb2-e39a9def924e/-/format/auto/-/quality/normal/",
+      "end_date": "2027-01-03",
+      "start_time": "11:00",
+      "end_time": "19:00",
+      "artists": [],
+      "description": "A showcase of hundreds of original art pieces by 30 artists for the holiday season.",
+      "url": "https://www.albertastreetgallery.com/events.html",
+      "image_url": "https://www.albertastreetgallery.com/uploads/1/9/1/0/19101421/giftshow3_1.jpg",
       "neighborhood": "Alberta",
-      "address": "2714 NE Alberta St",
+      "address": "1829 NE Alberta St",
       "price": "free",
       "price_note": "",
       "source": "ai",
-      "id": "8b61fb158306"
+      "id": "fd6981626eb0"
     },
     {
-      "title": "Opening Reception: Meg Adamson — Light Worship",
+      "title": "Opening Reception: November 27th",
       "venue": "Antler Gallery",
       "event_type": "opening_reception",
       "start_date": "2026-11-27",
       "end_date": null,
       "start_time": "18:00",
       "end_time": "21:00",
-      "artists": [
-        "Meg Adamson"
-      ],
+      "artists": [],
       "description": "",
-      "url": "https://www.antlerpdx.com/collections/meg-adamson-light-worship",
-      "image_url": "https://i.shgcdn.com/4de46c4a-e5ac-4a6f-8a76-fb0885e08cb7/-/format/auto/-/quality/normal/",
+      "url": "https://www.antlerpdx.com/",
+      "image_url": "",
       "neighborhood": "Alberta",
       "address": "2714 NE Alberta St",
       "price": "free",
       "price_note": "",
       "source": "ai",
-      "id": "3690e1e55213"
-    },
-    {
-      "title": "Opening Reception: Rachel Warkentin — New In Box (NIB)",
-      "venue": "Antler Gallery",
-      "event_type": "opening_reception",
-      "start_date": "2026-11-27",
-      "end_date": null,
-      "start_time": "18:00",
-      "end_time": "21:00",
-      "artists": [
-        "Rachel Warkentin"
-      ],
-      "description": "",
-      "url": "https://www.antlerpdx.com/collections/rachel-warkentin-new-in-box-nib",
-      "image_url": "https://i.shgcdn.com/e26d2317-9572-4a2b-9e18-8ef24f96b1a4/-/format/auto/-/quality/normal/",
-      "neighborhood": "Alberta",
-      "address": "2714 NE Alberta St",
-      "price": "free",
-      "price_note": "",
-      "source": "ai",
-      "id": "8c3891a27f71"
+      "id": "51553714649a"
     },
     {
       "title": "Holiday Weekends at the Garden",
@@ -1324,18 +1275,37 @@
       "id": "6ecb2b0df725"
     },
     {
-      "title": "Confidants: Rick Bartow and Seiichi Hiroshima",
+      "title": "Holiday Weekends at the Garden",
+      "venue": "Portland Japanese Garden",
+      "event_type": "other",
+      "start_date": "2026-11-29",
+      "end_date": "2026-11-29",
+      "start_time": null,
+      "end_time": null,
+      "artists": [],
+      "description": "Enjoy special holiday activities at the garden.",
+      "url": "https://japanesegarden.org/pjg-events/holiday-weekends-at-the-garden/2026-11-29/",
+      "image_url": "",
+      "neighborhood": "Washington Park",
+      "address": "611 SW Kingston Ave",
+      "price": "ticketed",
+      "price_note": "",
+      "source": "ai",
+      "id": "3cc6ca5dcc5d"
+    },
+    {
+      "title": "Opening Reception: Confidants: Rick Bartow and Seiichi Hiroshima",
       "venue": "Froelick Gallery",
-      "event_type": "exhibition",
+      "event_type": "opening_reception",
       "start_date": "2026-12-02",
-      "end_date": "2027-01-30",
+      "end_date": null,
       "start_time": null,
       "end_time": null,
       "artists": [
         "Rick Bartow",
         "Seiichi Hiroshima"
       ],
-      "description": "A collaboration spanning decades between two close friends.",
+      "description": "Opening reception for the exhibition featuring two close friends' collaboration.",
       "url": "https://froelickgallery.com/exhibitions/153-confidants-rick-bartow-and-seiichi-hiroshima-two-close-friends-whose-collaboration-spanned-decades./overview/",
       "image_url": "https://static-assets.artlogic.net/w_1200,c_limit,f_auto,fl_lossy,q_auto/artlogicstorage/froelickgallery/images/view/0aef5c989e3b46e969206f42fe6c31fbj/froelickgallery-rick-bartow-bbj-amarylis-1999.jpg",
       "neighborhood": "Pearl",
@@ -1343,7 +1313,7 @@
       "price": "free",
       "price_note": "",
       "source": "ai",
-      "id": "ff8dd829c382"
+      "id": "ba4bb9a21949"
     },
     {
       "title": "Homing",
@@ -1365,27 +1335,6 @@
       "price_note": "",
       "source": "ai",
       "id": "d9088ad9f871"
-    },
-    {
-      "title": "Opening Reception: Nell Warren — Homing",
-      "venue": "PDX Contemporary Art",
-      "event_type": "opening_reception",
-      "start_date": "2026-12-02",
-      "end_date": null,
-      "start_time": null,
-      "end_time": null,
-      "artists": [
-        "Nell Warren"
-      ],
-      "description": "",
-      "url": "https://pdxcontemporaryart.com/homing",
-      "image_url": "",
-      "neighborhood": "Northwest",
-      "address": "1881 NW Vaughn St",
-      "price": "free",
-      "price_note": "",
-      "source": "ai",
-      "id": "9fcf146c2ab8"
     },
     {
       "title": "Artist Talk with Photographer Mathieu Rossi",
@@ -1447,7 +1396,7 @@
       "id": "64deb6ed2144"
     },
     {
-      "title": "First Thursday at Froelick Gallery",
+      "title": "First Thursday: Confidants: Rick Bartow and Seiichi Hiroshima",
       "venue": "Froelick Gallery",
       "event_type": "art_walk",
       "start_date": "2026-12-03",
@@ -1455,15 +1404,15 @@
       "start_time": "11:00",
       "end_time": "20:00",
       "artists": [],
-      "description": "Gallery open for First Thursday events.",
-      "url": "https://froelickgallery.com/exhibitions/",
-      "image_url": "",
+      "description": "Join us for First Thursday featuring the exhibition of Rick Bartow and Seiichi Hiroshima.",
+      "url": "https://froelickgallery.com/exhibitions/153-confidants-rick-bartow-and-seiichi-hiroshima-two-close-friends-whose-collaboration-spanned-decades./overview/",
+      "image_url": "https://static-assets.artlogic.net/w_1200,c_limit,f_auto,fl_lossy,q_auto/artlogicstorage/froelickgallery/images/view/0aef5c989e3b46e969206f42fe6c31fbj/froelickgallery-rick-bartow-bbj-amarylis-1999.jpg",
       "neighborhood": "Pearl",
       "address": "714 NW Davis St",
       "price": "free",
       "price_note": "",
       "source": "ai",
-      "id": "710582e2b17f"
+      "id": "25629ac4683f"
     },
     {
       "title": "Northwest Masters Works from Estates & Private Collections",
@@ -1506,6 +1455,27 @@
       "id": "072bfc5e94d7"
     },
     {
+      "title": "Settings: A Workshop and Conversation with Rob Rhee",
+      "venue": "Converge 45",
+      "event_type": "workshop",
+      "start_date": "2026-12-05",
+      "end_date": "2026-12-05",
+      "start_time": "14:00",
+      "end_time": "16:00",
+      "artists": [
+        "Rob Rhee"
+      ],
+      "description": "Join artist Rob Rhee for a workshop on growing soil and its relation to his exhibition.",
+      "url": "https://www.converge45.org/events/settings-a-workshop-and-conversation-with-rob-rhee",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/649e666f9ba5a767aae57678/1795550199926-1IM1S9FMPRGF7W9NF0KQ/C45-SE-Cooper-Rhee-DZ2_6705-web.jpg",
+      "neighborhood": "Northwest",
+      "address": "1801 NW Upshur St",
+      "price": "free",
+      "price_note": "",
+      "source": "ai",
+      "id": "9df06d841fb2"
+    },
+    {
       "title": "Japanese Decorative Paper & Bookbinding Workshop",
       "venue": "Japanese American Museum of Oregon",
       "event_type": "workshop",
@@ -1516,7 +1486,7 @@
       "artists": [],
       "description": "Learn to make decorative papers and bind traditional Japanese books in a two-day workshop.",
       "url": "https://jamo.org/event/bookbinding/",
-      "image_url": "",
+      "image_url": "https://jamo.org/wp-content/uploads/2026/10/Petz_sekkazome_yotsumeToji-scaled.jpg",
       "neighborhood": "Old Town",
       "address": "411 NW Flanders St",
       "price": "ticketed",
@@ -1535,7 +1505,7 @@
       "artists": [
         "Shoka Stonelake"
       ],
-      "description": "Learn the art of Etegami in this hands-on workshop.",
+      "description": "Learn to create illustrated postcards in this hands-on workshop.",
       "url": "https://japanesegarden.org/pjg-events/etegami-japanese-picture-postcard-workshop-with-shoka-stonelake/2026-12-05/",
       "image_url": "",
       "neighborhood": "Washington Park",
@@ -1611,9 +1581,9 @@
       "start_time": "20:00",
       "end_time": "21:00",
       "artists": [],
-      "description": "Our candlelight ceremonies offer quiet, contemplative spaces for people carrying grief of all kinds.",
+      "description": "Quiet, contemplative space for people carrying grief of all kinds.",
       "url": "https://www.thelanternpdx.org/gatherings/candlelight-gathering",
-      "image_url": "",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/67ffee7f13776e61fd82546d/1794345971102-OTXLX24JNREX4GSWXGWQ/SquareSpace+Inset+Event+Image+%286%29.png",
       "neighborhood": "Southeast",
       "address": "2828 SE Stephens St",
       "price": "free",
@@ -1696,7 +1666,7 @@
       ],
       "description": "An evening of true personal stories, shared reflection, and community connection.",
       "url": "https://www.thelanternpdx.org/gatherings/you-are-not-alone-chris-lauren",
-      "image_url": "",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/67ffee7f13776e61fd82546d/1795126166599-2TQEHESAMGCJ4VPPAXT6/SquareSpace+Inset+Event+Image+%2822%29.png",
       "neighborhood": "Southeast",
       "address": "2828 SE Stephens St",
       "price": "free",
@@ -1734,7 +1704,7 @@
       "artists": [
         "SamaZama"
       ],
-      "description": "Enjoy a unique cultural performance featuring Koto and Cello.",
+      "description": "Enjoy a unique cultural performance featuring Koto and cello.",
       "url": "https://japanesegarden.org/pjg-events/cultural-performance-koto-and-cello-by-samazama/2026-12-12/",
       "image_url": "",
       "neighborhood": "Washington Park",
@@ -1755,12 +1725,12 @@
       "artists": [
         "Phoebe Steinhoff-Smith"
       ],
-      "description": "Join us for a 15-minute speed portrait session with the ever talented Phoebe Steinhoff-Smith.",
+      "description": "15-minute speed portrait session to create meaningful and personal gifts.",
       "url": "https://www.thelanternpdx.org/gatherings/portrait-sessions",
-      "image_url": "",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/67ffee7f13776e61fd82546d/1794591972171-VA8FKTH791IRSQDF1ZU0/SquareSpace+Inset+Event+Image+%2814%29.png",
       "neighborhood": "Southeast",
       "address": "2828 SE Stephens St",
-      "price": "free",
+      "price": "unknown",
       "price_note": "",
       "source": "ai",
       "id": "196e3eaaa059"
@@ -1773,9 +1743,7 @@
       "end_date": "2027-04-18",
       "start_time": null,
       "end_time": null,
-      "artists": [
-        "Frank Stella"
-      ],
+      "artists": [],
       "description": "",
       "url": "https://www.ojmche.org/events/frank-stella-had-gadya/",
       "image_url": "",
@@ -1852,7 +1820,7 @@
       "start_time": "14:00",
       "end_time": "17:00",
       "artists": [],
-      "description": "Join us for a festive holiday gathering.",
+      "description": "Join us for a festive holiday open house.",
       "url": "https://froelickgallery.com/exhibitions/",
       "image_url": "",
       "neighborhood": "Pearl",
@@ -1873,7 +1841,7 @@
       "artists": [],
       "description": "Learn the art of furoshiki gift wrapping with demonstrations and assistance.",
       "url": "https://jamo.org/event/furoshiki-demo/",
-      "image_url": "",
+      "image_url": "https://jamo.org/wp-content/uploads/2026/11/Furoshiki.png",
       "neighborhood": "Old Town",
       "address": "411 NW Flanders St",
       "price": "ticketed",
@@ -1892,15 +1860,34 @@
       "artists": [
         "Crosstalk"
       ],
-      "description": "Celebrate the joy and nostalgia of the holiday season with the timeless music of Vince Guaraldi's A Charlie Brown Christmas.",
+      "description": "Celebrate the joy and nostalgia of the holiday season with timeless music.",
       "url": "https://www.thelanternpdx.org/gatherings/charlie-brown-christmas",
-      "image_url": "",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/67ffee7f13776e61fd82546d/1795554727103-WNWQS6L0E9IHQ1BRDJPO/SquareSpace+Inset+Event+Image+%2823%29.png",
       "neighborhood": "Southeast",
       "address": "2828 SE Stephens St",
-      "price": "free",
+      "price": "unknown",
       "price_note": "",
       "source": "ai",
       "id": "4ba4289b5901"
+    },
+    {
+      "title": "Liminal: A Longest Night Gathering",
+      "venue": "The Lantern",
+      "event_type": "other",
+      "start_date": "2026-12-20",
+      "end_date": "2026-12-20",
+      "start_time": "18:45",
+      "end_time": "20:30",
+      "artists": [],
+      "description": "An evening of music, poetry, and honoring grief and the longest night.",
+      "url": "https://www.thelanternpdx.org/gatherings/liminal-longest-night",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/67ffee7f13776e61fd82546d/1794592048732-WG0SGL3E6IR4TYND7LPN/SquareSpace+Inset+Event+Image+%2815%29.png",
+      "neighborhood": "Southeast",
+      "address": "2828 SE Stephens St",
+      "price": "unknown",
+      "price_note": "",
+      "source": "ai",
+      "id": "52659930988e"
     },
     {
       "title": "Soundbath & Reiki with Lux Aura Energetic Wellness",
@@ -1913,12 +1900,12 @@
       "artists": [
         "Lux Aura Energetic Wellness"
       ],
-      "description": "This restorative experience encourages deep relaxation, energetic balance, and nervous system restoration.",
+      "description": "Restorative experience designed for deep relaxation and energetic balance.",
       "url": "https://www.thelanternpdx.org/gatherings/soundbath-reiki",
-      "image_url": "",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/67ffee7f13776e61fd82546d/1794592048732-WG0SGL3E6IR4TYND7LPN/SquareSpace+Inset+Event+Image+%2815%29.png",
       "neighborhood": "Southeast",
       "address": "2828 SE Stephens St",
-      "price": "free",
+      "price": "unknown",
       "price_note": "",
       "source": "ai",
       "id": "cba85f803721"
@@ -1966,25 +1953,6 @@
       "id": "b069569119a0"
     },
     {
-      "title": "Illuminate Aura Photography",
-      "venue": "The Lantern",
-      "event_type": "workshop",
-      "start_date": "2027-01-14",
-      "end_date": "2027-01-14",
-      "start_time": "18:00",
-      "end_time": "20:00",
-      "artists": [],
-      "description": "Join us for an immersive aura photography experience capturing the human energy field.",
-      "url": "https://www.thelanternpdx.org/gatherings/aura-photography",
-      "image_url": "",
-      "neighborhood": "Southeast",
-      "address": "2828 SE Stephens St",
-      "price": "free",
-      "price_note": "",
-      "source": "ai",
-      "id": "41795eaaa24b"
-    },
-    {
       "title": "Double Feature: Japanese Photographers Who Captured America",
       "venue": "Japanese American Museum of Oregon",
       "event_type": "screening",
@@ -1993,9 +1961,9 @@
       "start_time": "13:00",
       "end_time": "17:00",
       "artists": [],
-      "description": "Film screening of A Life Reimagined: The George Masa Story and Our Mr. Matsura with a Q&A.",
+      "description": "A double feature film event with a Q&A session with directors.",
       "url": "https://jamo.org/event/double-feature/",
-      "image_url": "",
+      "image_url": "https://jamo.org/wp-content/uploads/2026/11/Double-Feature-Image.png",
       "neighborhood": "Old Town",
       "address": "411 NW Flanders St",
       "price": "ticketed",
@@ -2092,7 +2060,7 @@
       "start_time": "13:00",
       "end_time": null,
       "artists": [],
-      "description": "Artists of refractiv discuss their process and walk through the gallery.",
+      "description": "Artists discuss their process and walk through the gallery.",
       "url": "https://jamo.org/event/refractiv-talk/",
       "image_url": "",
       "neighborhood": "Old Town",
@@ -2260,7 +2228,7 @@
       "artists": [
         "Benjamin Mefford"
       ],
-      "description": "Mefford's abstract sculptures express moments of promise through organic free carving.",
+      "description": "Mefford's abstract sculptures express moments of promise through an organic carving process.",
       "url": "https://www.blackfish.com/artist-selected/benjamin-mefford-selected-works",
       "image_url": "https://static.wixstatic.com/media/e8e512_d91012132f9a4462a220e9ab802fb4f0~mv2.jpg/v1/fill/w_777,h_66,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/e8e512_d91012132f9a4462a220e9ab802fb4f0~mv2.jpg",
       "neighborhood": "Pearl",
@@ -2363,7 +2331,7 @@
         "Jon Gottshall",
         "Barbara Weiss"
       ],
-      "description": "Three artists share new work that invites you to pause and discover something unexpected.",
+      "description": "Three artists share new work that invites you to pause, look closer, and discover something unexpected.",
       "url": "https://www.gallery114.com/current-exhibition",
       "image_url": "https://images.squarespace-cdn.com/content/v1/67e04ef9f0b47c2f40e68096/cda5bcf3-5621-4991-ae47-7ddfdb538798/Weiss_All+My+Ships+Came+In.jpg",
       "neighborhood": "Pearl",
@@ -2494,7 +2462,7 @@
     },
     {
       "venue": "Alberta Street Gallery",
-      "events_found": 4,
+      "events_found": 1,
       "error": ""
     },
     {
@@ -2504,7 +2472,7 @@
     },
     {
       "venue": "Antler Gallery",
-      "events_found": 6,
+      "events_found": 4,
       "error": ""
     },
     {
@@ -2529,7 +2497,7 @@
     },
     {
       "venue": "Center for Contemporary Art & Culture (PNCA)",
-      "events_found": 4,
+      "events_found": 6,
       "error": ""
     },
     {
@@ -2539,7 +2507,7 @@
     },
     {
       "venue": "Converge 45",
-      "events_found": 5,
+      "events_found": 6,
       "error": ""
     },
     {
@@ -2589,7 +2557,7 @@
     },
     {
       "venue": "Nationale",
-      "events_found": 3,
+      "events_found": 2,
       "error": ""
     },
     {
@@ -2639,7 +2607,7 @@
     },
     {
       "venue": "Portland Japanese Garden",
-      "events_found": 10,
+      "events_found": 11,
       "error": ""
     },
     {
